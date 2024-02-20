@@ -59,7 +59,7 @@ function _hasPermission() {
               break;
             }
 
-            throw "[SharepointPlus 'hasPermission'] the list ID/Name is required.";
+            throw "[SharepointSharp 'hasPermission'] the list ID/Name is required.";
 
           case 3:
             if (this.url) {
@@ -67,7 +67,7 @@ function _hasPermission() {
               break;
             }
 
-            throw "[SharepointPlus 'hasPermission'] not able to find the URL!";
+            throw "[SharepointSharp 'hasPermission'] not able to find the URL!";
 
           case 5:
             // we cannot determine the url
@@ -126,7 +126,7 @@ function _hasPermission() {
               break;
             }
 
-            throw "[SharepointPlus 'hasPermission'] the permission '" + perm + "' is not valid. Please, check the documentation.";
+            throw "[SharepointSharp 'hasPermission'] the permission '" + perm + "' is not valid. Please, check the documentation.";
 
           case 12:
             i++;

@@ -17,8 +17,8 @@ import _buildBodyForSOAP from './_buildBodyForSOAP.js';
 */
 
 export default function getAttachment(itemID) {
-  if (!this.listID) throw "[SharepointPlus 'getAttachment']: the list ID/Name is required";
-  if (!this.url) throw "[SharepointPlus 'getAttachment']: not able to find the URL!"; // we cannot determine the url
+  if (!this.listID) throw "[SharepointSharp 'getAttachment']: the list ID/Name is required";
+  if (!this.url) throw "[SharepointSharp 'getAttachment']: not able to find the URL!"; // we cannot determine the url
   // do the request
 
   return ajax.call(this, {

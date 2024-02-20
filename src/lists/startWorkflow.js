@@ -29,7 +29,7 @@ import getWorkflowID from './getWorkflowID.js'
 **/
 export default async function startWorkflow(setup) {
   try {
-    if (!this.url) throw "[SharepointPlus 'startWorkflow'] not able to find the URL!";
+    if (!this.url) throw "[SharepointSharp 'startWorkflow'] not able to find the URL!";
 
     // if no listID then it's a Site Workflow so we use startWorkflow2013
     if (!this.listID) {
@@ -37,8 +37,8 @@ export default async function startWorkflow(setup) {
       return startWorkflow2013.call(this, setup);
     }
     setup = setup || {};
-    if (!setup.workflowName && !setup.workflowID) throw "[SharepointPlus 'startWorkflow'] Please provide the workflow name"
-    if (!setup.ID) throw "[SharepointPlus 'startWorkflow'] Please provide the item ID"
+    if (!setup.workflowName && !setup.workflowID) throw "[SharepointSharp 'startWorkflow'] Please provide the workflow name"
+    if (!setup.ID) throw "[SharepointSharp 'startWorkflow'] Please provide the item ID"
 
     // find the FileRef and templateID
     if (!setup.fileRef && !setup.workflowID) {

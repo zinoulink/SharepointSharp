@@ -22,7 +22,7 @@ import getURL from '../utils/getURL.js'
 */
 export default async function getUserInfo(username, setup) {
   try {
-    if (typeof username !== "string") throw "[SharepointPlus 'getUserInfo'] the username is required.";
+    if (typeof username !== "string") throw "[SharepointSharp 'getUserInfo'] the username is required.";
     // default values
     setup = setup || {};
     if (!setup.url) {
@@ -36,7 +36,7 @@ export default async function getUserInfo(username, setup) {
     // get the details
     data=data.getElementsByTagName('User');
     if (data.length===0) {
-      return Promise.reject("[SharepointPlus 'getUserInfo'] nothing returned?!")
+      return Promise.reject("[SharepointSharp 'getUserInfo'] nothing returned?!")
     } else {
       return Promise.resolve({ID:data[0].getAttribute("ID"),Sid:data[0].getAttribute("Sid"),Name:data[0].getAttribute("Name"),LoginName:data[0].getAttribute("LoginName"),Email:data[0].getAttribute("Email"),Notes:data[0].getAttribute("Notes"),IsSiteAdmin:data[0].getAttribute("IsSiteAdmin"),IsDomainGroup:data[0].getAttribute("IsDomainGroup"),Flags:data[0].getAttribute("Flags")})
     }

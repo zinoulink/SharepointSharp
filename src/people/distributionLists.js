@@ -21,7 +21,7 @@ import getURL from '../utils/getURL.js'
 */
 export default async function distributionLists(username, setup) {
   try {
-    if (!username) throw "[SharepointPlus 'distributionLists'] the username is required.";
+    if (!username) throw "[SharepointSharp 'distributionLists'] the username is required.";
     // default values
     setup = setup || {};
     if (!setup.url) {

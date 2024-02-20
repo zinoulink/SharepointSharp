@@ -20,13 +20,13 @@ import _buildBodyForSOAP from './_buildBodyForSOAP.js'
 */
 export default async function view(viewID, options) {
   try {
-    if (!this.listID) return Promise.reject("[SharepointPlus 'view'] the list ID/Name is required.");
-    if (!viewID) return Promise.reject("[SharepointPlus 'view'] the view ID/Name is required.");
+    if (!this.listID) return Promise.reject("[SharepointSharp 'view'] the list ID/Name is required.");
+    if (!viewID) return Promise.reject("[SharepointSharp 'view'] the view ID/Name is required.");
     // default values
     let list = this.listID, i, found=false;
     options=options||{};
     options.cache=(options.cache===false?false:true);
-    if (!this.url) return Promise.reject("[SharepointPlus 'view'] not able to find the URL!"); // we cannot determine the url
+    if (!this.url) return Promise.reject("[SharepointSharp 'view'] not able to find the URL!"); // we cannot determine the url
 
     // check if we didn't save this information before
     if (options.cache) {
@@ -46,7 +46,7 @@ export default async function view(viewID, options) {
           return view.call(this, v.ID);
         }
       }
-      return Promise.reject("[SharepointPlus 'view'] not able to find the view called '"+viewID+"' for list '"+this.listID+"' at "+this.url);
+      return Promise.reject("[SharepointSharp 'view'] not able to find the view called '"+viewID+"' for list '"+this.listID+"' at "+this.url);
     }
 
     // do the request

@@ -48,7 +48,7 @@ function _createFolder() {
               break;
             }
 
-            throw "[SharepointPlus 'createFolder']: the folder path is required.";
+            throw "[SharepointSharp 'createFolder']: the folder path is required.";
 
           case 3:
             // split the path based on '/'

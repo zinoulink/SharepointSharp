@@ -5,24 +5,24 @@ var self = this;
 ?>
 
       <div class="span10" id="main"> <!-- content -->
-        <h1>SharepointPlus <?js= this.SPversion ?></h1>
-        <div class="alert alert-danger alert-bordered">Important changes introduced with <b>SharepointPlus v6.0</b>. Make sure to <a href="https://github.com/Aymkdn/SharepointPlus/wiki/SharepointPlus-v6.0-Announcement">read the announcement</a> and to read the <a href="https://github.com/Aymkdn/SharepointPlus/blob/master/changelog.md">changelog</a>.</div>
+        <h1>SharepointSharp <?js= this.SPversion ?></h1>
+        <div class="alert alert-danger alert-bordered">Important changes introduced with <b>SharepointSharp v6.0</b>. Make sure to <a href="https://github.com/Aymkdn/SharepointSharp/wiki/SharepointSharp-v6.0-Announcement">read the announcement</a> and to read the <a href="https://github.com/Aymkdn/SharepointSharp/blob/master/changelog.md">changelog</a>.</div>
         <div>
           <a href="https://twitter.com/sp_js" class="twitter-follow-button" data-show-count="false" data-lang="en" data-dnt="true">Follow @sp_js</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          <!-- <a href="https://gitpunch.com/" class="sibbill" title="with gitpunch.com"><img src="img/sibbell.png" width="12" height="12" /> Be notified on new release</a> --> <a href="https://www.jsdelivr.com/package/npm/sharepointplus"><img src="https://data.jsdelivr.com/v1/package/npm/sharepointplus/badge" alt="badge JSDelivr"></a>
+          <!-- <a href="https://gitpunch.com/" class="sibbill" title="with gitpunch.com"><img src="img/sibbell.png" width="12" height="12" /> Be notified on new release</a> --> <a href="https://www.jsdelivr.com/package/npm/SharepointSharp"><img src="https://data.jsdelivr.com/v1/package/npm/SharepointSharp/badge" alt="badge JSDelivr"></a>
         </div>
         <h2>Description</h2>
         <div class="content">
-          <p><a href="https://github.com/Aymkdn/SharepointPlus" title="Github Repository">SharepointPlus ($SP)</a> is a <strong>JavaScript API for Sharepoint</strong>. This library offers some extended features for SharePoint entirely on client side (requires no server install). $SP will simplify your interactions with Sharepoint.</p>
+          <p><a href="https://github.com/Aymkdn/SharepointSharp" title="Github Repository">SharepointSharp ($SP)</a> is a <strong>JavaScript API for Sharepoint</strong>. This library offers some extended features for SharePoint entirely on client side (requires no server install). $SP will simplify your interactions with Sharepoint.</p>
         </div>
 
         <h2>SharePoint Support</h2>
         <div class="content">
           <ul>
-            <li><b>SharePoint 2007</b> : Compatible until <a href="https://github.com/Aymkdn/SharepointPlus/releases/tag/v3.0.5">SharepointPlus v3.0.5</a> – <i>SP2007 is not tested anymore</i></li>
-            <li><b>SharePoint 2010</b> : Compatible until <a href="https://github.com/Aymkdn/SharepointPlus/releases/tag/v5.2">SharepointPlus v5.2</a> – <i>SP2010 is not tested anymore</i></li>
-            <li><b>SharePoint 2013</b> : Compatible until <a href="https://github.com/Aymkdn/SharepointPlus/releases/tag/v6.1.5">SharepointPlus v6.1.5</a> – <i>SP2013 is not tested anymore</i></li>
+            <li><b>SharePoint 2007</b> : Compatible until <a href="https://github.com/Aymkdn/SharepointSharp/releases/tag/v3.0.5">SharepointSharp v3.0.5</a> – <i>SP2007 is not tested anymore</i></li>
+            <li><b>SharePoint 2010</b> : Compatible until <a href="https://github.com/Aymkdn/SharepointSharp/releases/tag/v5.2">SharepointSharp v5.2</a> – <i>SP2010 is not tested anymore</i></li>
+            <li><b>SharePoint 2013</b> : Compatible until <a href="https://github.com/Aymkdn/SharepointSharp/releases/tag/v6.1.5">SharepointSharp v6.1.5</a> – <i>SP2013 is not tested anymore</i></li>
             <li><b>SharePoint Online</b> : <strong style="color:green">&#10003; current supported version</strong></li>
           </ul>
         </div>
@@ -32,11 +32,11 @@ var self = this;
         <div class="content">
           <p>If you develop with Node, you can install the module with:</p>
 <pre class="prettyprint lang-bash">
-npm install sharepointplus
+npm install SharepointSharp
 </pre>
         <p>Then, just import it:</p>
 <pre class="prettyprint lang-js">
-import $SP from 'sharepointplus'
+import $SP from 'SharepointSharp'
 </pre>
 
         <p>To make <code>$SP</code> available from the browser's web console, you can add:</p>
@@ -46,50 +46,50 @@ global.$SP=$SP;
         </div>
         <h4>Tree Shaking</h4>
         <div class="content">
-          <p>Because SharepointPlus is split in small modules, you can only import the pieces you need, reducing the size of your bundles. To do so, you have two options.</p>
+          <p>Because SharepointSharp is split in small modules, you can only import the pieces you need, reducing the size of your bundles. To do so, you have two options.</p>
 
           <h5>1) Without Webpack</h5>
           <p>If you don't use Webpack, then you need to manually import the different modules based on your needs.</p>
 <pre class="prettyprint lang-js">
 // By using the below line, you'll import all the 70+ functions in your bundle
-// import $SP from 'sharepointplus'
+// import $SP from 'SharepointSharp'
 // By replacing the above line with only the necessary functions, you'll cut down the bundle size:
 
 // let's suppose you only need $SP().list().get() and $SP().getPeopleLookup() in your file
-import spInit from 'sharepointplus/es5/init.js'
-import list from 'sharepointplus/es5/lists/list.js'
-import get from 'sharepointplus/es5/lists/get.js'
-import getPeopleLookup from 'sharepointplus/es5/utils/getPeopleLookup.js'
+import spInit from 'SharepointSharp/es5/init.js'
+import list from 'SharepointSharp/es5/lists/list.js'
+import get from 'SharepointSharp/es5/lists/get.js'
+import getPeopleLookup from 'SharepointSharp/es5/utils/getPeopleLookup.js'
 const $SP = spInit({'list':list, 'get':get, 'getPeopleLookup':getPeopleLookup });
 </pre>
-          <p>Find the path to each function <a href="https://github.com/Aymkdn/sharepointplus-loader/blob/master/path.json">into this file</a>.</p>
+          <p>Find the path to each function <a href="https://github.com/Aymkdn/SharepointSharp-loader/blob/master/path.json">into this file</a>.</p>
           <h5>2) With Webpack / SPFx project</h5>
-          <p>If you use Webpack for your application, you can leverage the <a href="https://github.com/Aymkdn/sharepointplus-loader"><code>sharepointplus-loader</code> plugin</a> that will automatically replace <code>import $SP from 'sharepointplus'</code> in your code with the functions used in the file.</p>
+          <p>If you use Webpack for your application, you can leverage the <a href="https://github.com/Aymkdn/SharepointSharp-loader"><code>SharepointSharp-loader</code> plugin</a> that will automatically replace <code>import $SP from 'SharepointSharp'</code> in your code with the functions used in the file.</p>
 <pre class="prettyprint lang-js">
 // ----- file 'component.js' BEFORE being compiled with Webpack
-import $SP from 'sharepointplus'
+import $SP from 'SharepointSharp'
 </pre>
 <pre class="prettyprint lang-js">
-// ----- file 'component.js' AFTER being compiled with Webpack using the `sharepointplus-loader` plugin
+// ----- file 'component.js' AFTER being compiled with Webpack using the `SharepointSharp-loader` plugin
 // let's suppose you only use $SP().list().get() and $SP().getPeopleLookup() in the file
-// then the `sharepointplus-loader` plugin will automatically convert `import $SP from 'sharepointplus'` to the below code:
-import spInit from 'sharepointplus/es5/init.js'
-import list from 'sharepointplus/es5/lists/list.js'
-import get from 'sharepointplus/es5/lists/get.js'
-import getPeopleLookup from 'sharepointplus/es5/utils/getPeopleLookup.js'
+// then the `SharepointSharp-loader` plugin will automatically convert `import $SP from 'SharepointSharp'` to the below code:
+import spInit from 'SharepointSharp/es5/init.js'
+import list from 'SharepointSharp/es5/lists/list.js'
+import get from 'SharepointSharp/es5/lists/get.js'
+import getPeopleLookup from 'SharepointSharp/es5/utils/getPeopleLookup.js'
 const $SP = spInit({'list':list, 'get':get, 'getPeopleLookup':getPeopleLookup });
 </pre>
-          <p>To use <a href="https://github.com/Aymkdn/sharepointplus-loader"><code>sharepointplus-loader</code> plugin</a>, add it to your Webpack configuration file, in the plugins section.</p>
+          <p>To use <a href="https://github.com/Aymkdn/SharepointSharp-loader"><code>SharepointSharp-loader</code> plugin</a>, add it to your Webpack configuration file, in the plugins section.</p>
 
           <p>For <strong>regular Webpack config</strong>:</p>
 <pre class="prettyprint lang-js">
 // ----- file 'webpack.conf.js'
 const webpack = require('webpack');
-const SharepointPlusLoaderPlugin = require('sharepointplus-loader/plugin'); // load the plugin
+const SharepointSharpLoaderPlugin = require('SharepointSharp-loader/plugin'); // load the plugin
 module.exports = {
   [ ... your configuration ... ],
   plugins:[
-    new SharepointPlusLoaderPlugin() // add the plugin here
+    new SharepointSharpLoaderPlugin() // add the plugin here
   ]
 };
 </pre>
@@ -103,11 +103,11 @@ const build = require('@microsoft/sp-build-web');
 
 // add the plugin with the below block of code:
 const webpack = require('webpack');
-const SharepointPlusLoaderPlugin = require('sharepointplus-loader/plugin'); // load the plugin
+const SharepointSharpLoaderPlugin = require('SharepointSharp-loader/plugin'); // load the plugin
 build.configureWebpack.mergeConfig({
   additionalConfiguration: (generatedConfig) => {
     if (!Array.isArray(generatedConfig.plugins)) generatedConfig.plugins=[];
-    generatedConfig.plugins.push(new SharepointPlusLoaderPlugin()); // add the plugin here
+    generatedConfig.plugins.push(new SharepointSharpLoaderPlugin()); // add the plugin here
     // return modified config => SPFx build pipeline
     return generatedConfig;
   }
@@ -119,18 +119,18 @@ build.initialize(gulp);
         </div>
         <h4>`require` only</h4>
         <div class="content">
-          <p>If your project doesn't support <code>import</code> symbol, but only <code>require</code>, then you can still load SharepointPlus using the below syntax:</p>
+          <p>If your project doesn't support <code>import</code> symbol, but only <code>require</code>, then you can still load SharepointSharp using the below syntax:</p>
 <pre class="prettyprint lang-js">
-const $SP = require("sharepointplus/dist");
+const $SP = require("SharepointSharp/dist");
 </pre>
           <p>In that case you won't benefit from the tree-shaking optimization.
         </div>
 
         <h3 id="compatibility">Browser only</h3>
         <div class="content">
-          <p>You can also just <a href="https://cdn.jsdelivr.net/npm/sharepointplus/browser/sharepointplus.js">drop one file</a> in your HTML document which will contain all the 70+ functions and all the polyfills to support the <a href="#compatibility">different browsers</a>:</p>
+          <p>You can also just <a href="https://cdn.jsdelivr.net/npm/SharepointSharp/browser/SharepointSharp.js">drop one file</a> in your HTML document which will contain all the 70+ functions and all the polyfills to support the <a href="#compatibility">different browsers</a>:</p>
 <pre class="prettyprint lang-html">
-  &lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharepointplus/browser/sharepointplus.js">&lt;/script>
+  &lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/SharepointSharp/browser/SharepointSharp.js">&lt;/script>
 </pre>
           <div><strong>Note</strong>: because this file contains all the functions as well as all the polyfills, it might be quite big (~55KB gzipped).</div>
         </div>
@@ -144,19 +144,19 @@ const $SP = require("sharepointplus/dist");
             <p>
               It's important to note that Internet Explorer uses different engine versions depending of the webpage:
               <ul>
-                <li><strong>Sharepoint 2010</strong>: by default, a Sharepoint 2010 webpage, opened in IE11, will render with <strong>IE7 Engine</strong>! In that case, only <a href="https://github.com/Aymkdn/SharepointPlus/releases/tag/v3.14">SharepointPlus v3.14</a> is compatible because this Internet Explorer 7 engine is too old for the newest versions of SharepointPlus.</li>
-                <li><strong>Sharepoint 2013</strong>: by default, a Sharepoint 2010 webpage, opened in IE11, will render with <strong>IE10 Engine</strong>. In that case, the current version of SharepointPlus works.</li>
-                <li><strong>Sharepoint 2019/Online</strong>: by default, the webpage, opened in IE11, will render with <strong>IE11 Engine</strong>. In that case, the current version of SharepointPlus works.</li>
+                <li><strong>Sharepoint 2010</strong>: by default, a Sharepoint 2010 webpage, opened in IE11, will render with <strong>IE7 Engine</strong>! In that case, only <a href="https://github.com/Aymkdn/SharepointSharp/releases/tag/v3.14">SharepointSharp v3.14</a> is compatible because this Internet Explorer 7 engine is too old for the newest versions of SharepointSharp.</li>
+                <li><strong>Sharepoint 2013</strong>: by default, a Sharepoint 2010 webpage, opened in IE11, will render with <strong>IE10 Engine</strong>. In that case, the current version of SharepointSharp works.</li>
+                <li><strong>Sharepoint 2019/Online</strong>: by default, the webpage, opened in IE11, will render with <strong>IE11 Engine</strong>. In that case, the current version of SharepointSharp works.</li>
               </ul>
             </p>
             <p>You may need to add <code>&lt;meta http-equiv="X-UA-Compatible" content="IE=Edge" /&gt;</code> in your page's headers to make sure IE will support the latest engine.</p>
           </div> -->
         </div>
 
-        <h2>How does SharepointPlus work?</h2>
-        <p>SharepointPlus mainly uses the different <a href="http://sympmarc.github.io/SPServices/core/web-services.html" title="Link to Sympmarc website with some documentation regarding the Sharepoint Web Services">Web Services</a> to deal with the SharePoint server.</p>
+        <h2>How does SharepointSharp work?</h2>
+        <p>SharepointSharp mainly uses the different <a href="http://sympmarc.github.io/SPServices/core/web-services.html" title="Link to Sympmarc website with some documentation regarding the Sharepoint Web Services">Web Services</a> to deal with the SharePoint server.</p>
         <p>But the library also uses several REST API, e.g. when the Web Service is not available anymore, or if the REST API provides more functionalities.</p>
-        <!-- <p>Below is a comparative between Web Services (used by SharepointPlus) and REST API (used by some other libraries):</p>
+        <!-- <p>Below is a comparative between Web Services (used by SharepointSharp) and REST API (used by some other libraries):</p>
         <table>
           <thead>
             <tr>
@@ -182,7 +182,7 @@ const $SP = require("sharepointplus/dist");
               <td><span style="color:red">&#10007;</span> Authentication with a token</td>
             </tr>
             <tr>
-              <td><span style="color:green">&#10003;</span> Native XML, but JSON supported by SharepointPlus</td>
+              <td><span style="color:green">&#10003;</span> Native XML, but JSON supported by SharepointSharp</td>
               <td><span style="color:green">&#10003;</span> Native JSON support</td>
             </tr>
             <tr>
@@ -191,11 +191,11 @@ const $SP = require("sharepointplus/dist");
             </tr>
           </tbody>
         </table>
-        <p>Because of the large compatibility and the available features, using the Web Services it's still the right call for SharepointPlus.</p> -->
+        <p>Because of the large compatibility and the available features, using the Web Services it's still the right call for SharepointSharp.</p> -->
 
         <h2>Examples</h2>
         <div class="content">
-          <p>Let's see some examples of what you can do with SharepointPlus:</p>
+          <p>Let's see some examples of what you can do with SharepointSharp:</p>
 <pre class="prettyprint lang-js">
 // Update all items with an "Amount" value bigger than 1000
 $SP().list('My List Name').update({
@@ -259,13 +259,13 @@ $SP().list("Documents").createFile({
 
   <h2>Try it out</h2>
   <div class="content">
-    <p>You can test it right now. Just open your browser "Developer Tools" window on your SharePoint site somewhere, then run the following code snippet which will load the SharepointPlus script dynamically:</p>
+    <p>You can test it right now. Just open your browser "Developer Tools" window on your SharePoint site somewhere, then run the following code snippet which will load the SharepointSharp script dynamically:</p>
 <pre class="prettyprint lang-js">
-// 1: Load SharepointPlus
+// 1: Load SharepointSharp
 var script = document.createElement('script');
-script.src = "//cdn.jsdelivr.net/npm/sharepointplus/browser/sharepointplus.js";
+script.src = "//cdn.jsdelivr.net/npm/SharepointSharp/browser/SharepointSharp.js";
 document.getElementsByTagName('head')[0].appendChild(script);
-// if you receive the error: "Refused to load the script 'https://cdn.jsdelivr.net/npm/sharepointplus/browser/sharepointplus.js' because it violates the following Content Security Policy directive" then you'll have to directly copy/paste the code from https://cdn.jsdelivr.net/npm/sharepointplus/browser/sharepointplus.js in the console
+// if you receive the error: "Refused to load the script 'https://cdn.jsdelivr.net/npm/SharepointSharp/browser/SharepointSharp.js' because it violates the following Content Security Policy directive" then you'll have to directly copy/paste the code from https://cdn.jsdelivr.net/npm/SharepointSharp/browser/SharepointSharp.js in the console
 
 // 2: Try some library methods
 $SP().list('List In the Current Site').get({fields:"ID", where:"ID > 0"}).then(function(data) { data.forEach(function(d) { console.log(d.getAttribute("ID")) }) });
@@ -278,7 +278,7 @@ $SP().whoami().then(function(people) { for (var i=0; i < people.length; i++) con
 
   <h2>Node Server Side Application</h2>
   <div class="content">
-    <p>If you plan to run SharepointPlus on the server side using Node, you will need to install two additional modules:</p>
+    <p>If you plan to run SharepointSharp on the server side using Node, you will need to install two additional modules:</p>
 <pre class="prettyprint lang-bash">
 npm install xmldom sp-request
 </pre>
@@ -295,10 +295,10 @@ const credentials = {
 // you can also define a proxy
 const proxyweb = "http://" + credentials.domain + "%5C" + credentials.username + ":" + credentials.password + "@proxy:80";
 
-const $SP = require('sharepointplus');
+const $SP = require('SharepointSharp');
 const sp = $SP().proxy(proxyweb).auth(credentials);
 
-// you can then use SharepointPlus normally
+// you can then use SharepointSharp normally
 // e.g.: sp.list("Hello", "http://my.sharepoint.site/").get(...);
 </pre>
 </div>
@@ -306,10 +306,10 @@ const sp = $SP().proxy(proxyweb).auth(credentials);
     <h2>Older Versions</h2>
     <div class="content">
       <p>
-        The previous versions of SharepointPlus are available in the <a href="https://github.com/Aymkdn/SharepointPlus/releases">releases folder</a><br>
-        The documentation for SharepointPlus v3.14 is available at <a href="https://sharepointplus3.netlify.app/">https://sharepointplus3.netlify.app/</a><br>
-        The documentation for SharepointPlus v4.0 is available at <a href="https://sharepointplus4.netlify.app/">https://sharepointplus4.netlify.app/</a><br>
-        The documentation for SharepointPlus v5.2 is available at <a href="https://sharepointplus5.netlify.app/docs/">https://sharepointplus5.netlify.app/docs/</a>
+        The previous versions of SharepointSharp are available in the <a href="https://github.com/Aymkdn/SharepointSharp/releases">releases folder</a><br>
+        The documentation for SharepointSharp v3.14 is available at <a href="https://SharepointSharp3.netlify.app/">https://SharepointSharp3.netlify.app/</a><br>
+        The documentation for SharepointSharp v4.0 is available at <a href="https://SharepointSharp4.netlify.app/">https://SharepointSharp4.netlify.app/</a><br>
+        The documentation for SharepointSharp v5.2 is available at <a href="https://SharepointSharp5.netlify.app/docs/">https://SharepointSharp5.netlify.app/docs/</a>
       </p>
     </p>
   </div>

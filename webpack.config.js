@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'browser'),
-    filename: 'sharepointplus.js',
+    filename: 'SharepointSharp.js',
     library: '$SP',
     libraryExport: 'default',
     libraryTarget: 'window',

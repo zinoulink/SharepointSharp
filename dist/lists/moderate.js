@@ -72,7 +72,7 @@ function _moderate() {
               break;
             }
 
-            throw "[SharepointPlus 'moderate'] the list ID/Name is required.";
+            throw "[SharepointSharp 'moderate'] the list ID/Name is required.";
 
           case 3:
             // default values
@@ -83,7 +83,7 @@ function _moderate() {
               break;
             }
 
-            throw "[SharepointPlus 'moderate'] not able to find the URL!";
+            throw "[SharepointSharp 'moderate'] not able to find the URL!";
 
           case 6:
             // we cannot determine the url
@@ -146,7 +146,7 @@ function _moderate() {
               break;
             }
 
-            throw "[SharepointPlus 'moderate'] you have to provide the item ID called 'ID'";
+            throw "[SharepointSharp 'moderate'] you have to provide the item ID called 'ID'";
 
           case 28:
             if (!(typeof items[i].ApprovalStatus === "undefined")) {
@@ -154,7 +154,7 @@ function _moderate() {
               break;
             }
 
-            throw "[SharepointPlus 'moderate'] you have to provide the approval status 'ApprovalStatus' (Approved, Rejected, Pending, Draft or Scheduled)";
+            throw "[SharepointSharp 'moderate'] you have to provide the approval status 'ApprovalStatus' (Approved, Rejected, Pending, Draft or Scheduled)";
 
           case 30:
             _context2.t0 = (0, _keys.default)(_regenerator.default).call(_regenerator.default, items[i]);

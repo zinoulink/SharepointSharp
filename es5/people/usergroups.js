@@ -44,7 +44,7 @@ function _usergroups() {
               break;
             }
 
-            throw "[SharepointPlus 'usergroups']: the username is required.";
+            throw "[SharepointSharp 'usergroups']: the username is required.";
 
           case 3:
             setup = setup || {};

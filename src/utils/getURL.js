@@ -28,7 +28,7 @@ export default async function getURL() {
           if (result.length) {
             return Promise.resolve(checkURL(result[0].firstChild.nodeValue.toLowerCase()));
           } else {
-            return Promise.reject("[SharepointPlus 'getURL'] Unable to retrieve the URL")
+            return Promise.reject("[SharepointSharp 'getURL'] Unable to retrieve the URL")
           }
         } catch(err) {
           return Promise.reject(err);

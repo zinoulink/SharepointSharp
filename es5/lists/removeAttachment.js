@@ -24,12 +24,12 @@ import restoreVersion from './restoreVersion.js';
 export default function removeAttachment(setup) {
   var _this = this;
 
-  if (arguments.length === 0) throw "[SharepointPlus 'removeAttachment'] the arguments are mandatory.";
-  if (!this.listID) throw "[SharepointPlus 'removeAttachment'] the list ID/Name is required.";
-  if (!this.url) throw "[SharepointPlus 'removeAttachment'] not able to find the URL!"; // we cannot determine the url
+  if (arguments.length === 0) throw "[SharepointSharp 'removeAttachment'] the arguments are mandatory.";
+  if (!this.listID) throw "[SharepointSharp 'removeAttachment'] the list ID/Name is required.";
+  if (!this.url) throw "[SharepointSharp 'removeAttachment'] not able to find the URL!"; // we cannot determine the url
 
-  if (!setup.ID) throw "[SharepointPlus 'removeAttachment'] the item ID is required.";
-  if (!setup.fileURL) throw "[SharepointPlus 'removeAttachment'] the fileURL is required.";
+  if (!setup.ID) throw "[SharepointSharp 'removeAttachment'] the item ID is required.";
+  if (!setup.fileURL) throw "[SharepointSharp 'removeAttachment'] the fileURL is required.";
   return ajax.call(this, {
     url: this.url + "/_vti_bin/Lists.asmx",
     body: _buildBodyForSOAP("DeleteAttachment", "<listName>" + this.listID + "</listName><listItemID>" + setup.ID + "</listItemID><url>" + setup.fileURL + "</url>"),

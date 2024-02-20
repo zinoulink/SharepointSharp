@@ -38,16 +38,16 @@ function startWorkflow2013(setup) {
   var _this = this;
 
   return new _promise.default(function (prom_resolve, prom_reject) {
-    if (!_this.url) throw "[SharepointPlus 'startWorkflow2013'] not able to find the URL!";
+    if (!_this.url) throw "[SharepointSharp 'startWorkflow2013'] not able to find the URL!";
     setup = setup || {};
     setup.platformType = setup.platformType || 2013; // internal use when calling Site Workflow from startWorkflow()
 
-    if (!setup.workflowName) throw "[SharepointPlus 'startWorkflow2013'] Please provide the workflow name.";
+    if (!setup.workflowName) throw "[SharepointSharp 'startWorkflow2013'] Please provide the workflow name.";
     if (_this.listID && !setup.ID) throw "Error 'startWorkflow2013': Please provide the item ID."; // we need "sp.workflowservices.js"
 
     if (typeof SP === "undefined" || typeof SP.SOD === "undefined") {
       // eslint-disable-line
-      throw "[SharepointPlus 'startWorkflow2013']: SP.SOD.executeFunc is required (from the Microsoft file called init.js)";
+      throw "[SharepointSharp 'startWorkflow2013']: SP.SOD.executeFunc is required (from the Microsoft file called init.js)";
     }
 
     SP.SOD.executeFunc("sp.js", "SP.ClientContext", function () {

@@ -15,32 +15,32 @@ import ajax from '../utils/ajax.js'
  * $SP().list("List Name").stopWorkflow({ID:42, workflowName:"My workflow"});
  */
 export default function stopWorkflow(setup) {
-  if (!this.url) throw "[SharepointPlus 'stopWorkflow'] not able to find the URL!";
+  if (!this.url) throw "[SharepointSharp 'stopWorkflow'] not able to find the URL!";
   setup = setup || {};
-  if (!setup.workflowName && !setup.workflowID) throw "[SharepointPlus 'stopWorkflow'] Please provide the workflow name"
-  if (!setup.ID) throw "[SharepointPlus 'stopWorkflow'] Please provide the item ID"
+  if (!setup.workflowName && !setup.workflowID) throw "[SharepointSharp 'stopWorkflow'] Please provide the workflow name"
+  if (!setup.ID) throw "[SharepointSharp 'stopWorkflow'] Please provide the item ID"
 
   // retrieve the workflow instances
   return getWorkflowID.call(this, {ID:setup.ID, workflowName:setup.workflowName})
   .then(async wrkflw => {
     let lenInstances = wrkflw.instances.length;
-    if (lenInstances===0) return Promise.reject("[SharepointPlus 'stopWorkflow'] No instances found for this workflow");
+    if (lenInstances===0) return Promise.reject("[SharepointSharp 'stopWorkflow'] No instances found for this workflow");
     let lastInstance = wrkflw.instances[lenInstances-1];
     let html = await ajax.call(this, {url:lastInstance.StatusPageUrl});
     let requestDigest = html.match(/<input type="hidden" name="__REQUESTDIGEST" id="__REQUESTDIGEST" value=".*" \/>/g);
-    if (!requestDigest) throw "[SharepointPlus 'stopWorkflow'] Unable to find the __REQUESTDIGEST from the Workflow Status page";
+    if (!requestDigest) throw "[SharepointSharp 'stopWorkflow'] Unable to find the __REQUESTDIGEST from the Workflow Status page";
     requestDigest = requestDigest[0].match(/<input type="hidden" name="__REQUESTDIGEST" id="__REQUESTDIGEST" value="(.*)" \/>/)[1];
 
     let viewState = html.match(/<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value=".*" \/>/g);
-    if (!viewState) throw "[SharepointPlus 'stopWorkflow'] Unable to find the __VIEWSTATE from the Workflow Status page";
+    if (!viewState) throw "[SharepointSharp 'stopWorkflow'] Unable to find the __VIEWSTATE from the Workflow Status page";
     viewState = viewState[0].match(/<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="(.*)" \/>/)[1];
 
     let viewStateGenerator = html.match(/<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value=".*" \/>/g);
-    if (!viewStateGenerator) throw "[SharepointPlus 'stopWorkflow'] Unable to find the __VIEWSTATEGENERATOR from the Workflow Status page";
+    if (!viewStateGenerator) throw "[SharepointSharp 'stopWorkflow'] Unable to find the __VIEWSTATEGENERATOR from the Workflow Status page";
     viewStateGenerator = viewStateGenerator[0].match(/<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="(.*)" \/>/)[1];
 
     let eventValidation = html.match(/<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value=".*" \/>/g);
-    if (!eventValidation) throw "[SharepointPlus 'stopWorkflow'] Unable to find the __EVENTVALIDATION from the Workflow Status page";
+    if (!eventValidation) throw "[SharepointSharp 'stopWorkflow'] Unable to find the __EVENTVALIDATION from the Workflow Status page";
     eventValidation = eventValidation[0].match(/<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="(.*)" \/>/)[1];
 
     let params = {};

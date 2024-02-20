@@ -1,35 +1,35 @@
-# SharepointPlus
+# SharepointSharp
 
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/aymkdn/sharepointplus.svg)](http://isitmaintained.com/project/aymkdn/sharepointplus "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/aymkdn/sharepointplus.svg)](http://isitmaintained.com/project/aymkdn/sharepointplus "Percentage of issues still open")
-[![](https://data.jsdelivr.com/v1/package/npm/sharepointplus/badge)](https://www.jsdelivr.com/package/npm/sharepointplus)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/aymkdn/SharepointSharp.svg)](http://isitmaintained.com/project/aymkdn/SharepointSharp "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/aymkdn/SharepointSharp.svg)](http://isitmaintained.com/project/aymkdn/SharepointSharp "Percentage of issues still open")
+[![](https://data.jsdelivr.com/v1/package/npm/SharepointSharp/badge)](https://www.jsdelivr.com/package/npm/SharepointSharp)
 
-SharepointPlus ($SP) is a JavaScript library which offers some extended features for SharePoint entirely on client side (requires no server install). $SP will simplify your interactions with Sharepoint.
+SharepointSharp ($SP) is a JavaScript library which offers some extended features for SharePoint entirely on client side (requires no server install). $SP will simplify your interactions with Sharepoint.
 
 ## Documentation
 
-Browse the [online documentation here](https://aymkdn.github.io/SharepointPlus/).
+Browse the [online documentation here](https://aymkdn.github.io/SharepointSharp/).
 
 ## Quick Start
 
 ### Node Environment
 
 ```sh
-npm install sharepointplus
+npm install SharepointSharp
 ```
 
 Then:
 ```javascript
-import $SP from 'sharepointplus'
+import $SP from 'SharepointSharp'
 ```
 
-Please, make sure to read [the documentation](https://aymkdn.github.io/SharepointPlus/) to optimize your bundle size.
+Please, make sure to read [the documentation](https://aymkdn.github.io/SharepointSharp/) to optimize your bundle size.
 
 ### Browser Only
 
 To directly use it in a browser:
 ```html
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/sharepointplus/browser/sharepointplus.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/SharepointSharp/browser/SharepointSharp.js"></script>
 ```
 
 ## Usage / Examples
@@ -65,4 +65,4 @@ $SP().list('ListName').get({
 
 ## More information
 
-Please visit the [online documentation](https://aymkdn.github.io/SharepointPlus/) to know more.
+Please visit the [online documentation](https://aymkdn.github.io/SharepointSharp/) to know more.

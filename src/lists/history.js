@@ -21,9 +21,9 @@ import _buildBodyForSOAP from './_buildBodyForSOAP.js'
   });
 */
 export default function history(params) {
-  if (!this.listID) throw "[SharepointPlus 'history'] the list ID/Name is required.";
+  if (!this.listID) throw "[SharepointSharp 'history'] the list ID/Name is required.";
   params=params||{};
-  if (!params.ID || !params.Name) throw "[SharepointPlus 'history'] you must provide the item ID and field Name.";
+  if (!params.ID || !params.Name) throw "[SharepointSharp 'history'] you must provide the item ID and field Name.";
 
   // send the request
   return ajax.call(this, {

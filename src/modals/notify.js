@@ -30,8 +30,8 @@ import removeNotify from './removeNotify.js'
   })
 */
 export default function notify(message,options) {
-  if (message === undefined) throw "[SharepointPlus notify'] you must provide the message to show."
-  if (typeof message !== "string") throw "[SharepointPlus notify'] you must provide a string for the message to show."
+  if (message === undefined) throw "[SharepointSharp notify'] you must provide the message to show."
+  if (typeof message !== "string") throw "[SharepointSharp notify'] you must provide a string for the message to show."
 
   options = options || {};
   options.timeout = (!isNaN(options.timeout) ? options.timeout : 5);

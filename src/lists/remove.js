@@ -46,7 +46,7 @@ import add from './add.js'
 */
 export default async function remove(items, options) {
   try {
-    if (!this.url) throw "[SharepointPlus 'remove'] not able to find the URL!"; // we cannot determine the url
+    if (!this.url) throw "[SharepointSharp 'remove'] not able to find the URL!"; // we cannot determine the url
     // default values
     if (!options && items.where) { options=items; items=[]; } // the case when we use the "where"
     let setup={};
@@ -96,7 +96,7 @@ export default async function remove(items, options) {
         let event = data.filter(function(d) {
           return d.getAttribute("ID").indexOf("."+eventDate+"T") !== -1 || (d.getAttribute("RecurrenceID")||"").startsWith(eventDate);
         });
-        if (event.length===0) return Promise.reject("[SharepointPlus 'remove'] No event found on "+eventDate);
+        if (event.length===0) return Promise.reject("[SharepointSharp 'remove'] No event found on "+eventDate);
         event = event[0];
 
         // see https://fatalfrenchy.wordpress.com/2010/07/16/sharepoint-recurrence-data-schema/

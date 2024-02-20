@@ -22,8 +22,8 @@ import webService from '../utils/webService.js';
 export default function setReadOnly(fieldID, readonly) {
   var _this = this;
 
-  if (!this.listID) throw "[SharepointPlus 'setReadOnly']: the list ID/Name is required";
-  if (!this.url) throw "[SharepointPlus 'setReadOnly']: not able to find the URL!"; // we cannot determine the url
+  if (!this.listID) throw "[SharepointSharp 'setReadOnly']: the list ID/Name is required";
+  if (!this.url) throw "[SharepointSharp 'setReadOnly']: not able to find the URL!"; // we cannot determine the url
   // do the request
 
   var updateSystemFields = "<Fields><Method ID='1'>";

@@ -8,7 +8,7 @@
   @example $SP().toXSLString("Big Title"); // --> "Big_x0020_Title"
 */
 export default function toXSLString(str) {
-  if (typeof str !== "string") throw "[SharepointPlus 'toXLSString'] The argument is not a string....";
+  if (typeof str !== "string") throw "[SharepointSharp 'toXLSString'] The argument is not a string....";
   // if the first car is a number, then FullEscape it
   let FullEscape = function(strg) {
     let hexVals = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F");

@@ -81,7 +81,7 @@ function _getURL() {
             return _context.abrupt("return", _promise.default.resolve(checkURL(result[0].firstChild.nodeValue.toLowerCase())));
 
           case 18:
-            return _context.abrupt("return", _promise.default.reject("[SharepointPlus 'getURL'] Unable to retrieve the URL"));
+            return _context.abrupt("return", _promise.default.reject("[SharepointSharp 'getURL'] Unable to retrieve the URL"));
 
           case 19:
             _context.next = 24;

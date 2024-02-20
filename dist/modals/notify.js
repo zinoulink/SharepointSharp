@@ -46,8 +46,8 @@ var _removeNotify = _interopRequireDefault(require("./removeNotify.js"));
 function notify(message, options) {
   var _this = this;
 
-  if (message === undefined) throw "[SharepointPlus notify'] you must provide the message to show.";
-  if (typeof message !== "string") throw "[SharepointPlus notify'] you must provide a string for the message to show.";
+  if (message === undefined) throw "[SharepointSharp notify'] you must provide the message to show.";
+  if (typeof message !== "string") throw "[SharepointSharp notify'] you must provide a string for the message to show.";
   options = options || {};
   options.timeout = !isNaN(options.timeout) ? options.timeout : 5;
   options.override = options.override === true ? true : false;

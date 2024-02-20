@@ -414,7 +414,7 @@ function _parseOn(q) {
     })
   });
 
-  // for Discussion Board, please refer to https://github.com/Aymkdn/SharepointPlus/wiki/Sharepoint-Discussion-Board
+  // for Discussion Board, please refer to https://github.com/Aymkdn/SharepointSharp/wiki/Sharepoint-Discussion-Board
 
   // [It doesn't work with Sharepoint 2013 anymore, only for SP2010]
   // You can use `useIndexForOrderBy:true` to override the list view threshold -- see https://spservices.codeplex.com/discussions/280642
@@ -435,12 +435,12 @@ function _parseOn(q) {
 */
 export default async function get (options) {
   try {
-    if (!this.listID) return Promise.reject("[SharepointPlus 'get']: the list ID/Name is required");
+    if (!this.listID) return Promise.reject("[SharepointSharp 'get']: the list ID/Name is required");
 
     // default values
     let setup={};
     cloneObject(true, setup, options);
-    if (!this.url) return Promise.reject("[SharepointPlus 'get']: not able to find the URL!"); // we cannot determine the url
+    if (!this.url) return Promise.reject("[SharepointSharp 'get']: not able to find the URL!"); // we cannot determine the url
 
     setup.fields                       = setup.fields || "";
     setup.where                        = setup.where || "";

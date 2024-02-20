@@ -24,8 +24,8 @@ import distributionLists from './distributionLists.js'
 export default async function isMember(setup) {
   try {
     setup = setup || {};
-    if (!setup.user) throw "[SharepointPlus 'isMember'] the user is required.";
-    if (!setup.group) throw "[SharepointPlus 'isMember'] the group is required.";
+    if (!setup.user) throw "[SharepointSharp 'isMember'] the user is required.";
+    if (!setup.group) throw "[SharepointSharp 'isMember'] the group is required.";
     setup.cache = (setup.cache === false ? false : true)
     if (!setup.url) {
       setup.url = await getURL.call(this);

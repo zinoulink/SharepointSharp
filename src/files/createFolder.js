@@ -24,7 +24,7 @@ import add from '../lists/add.js'
 */
 export default async function createFolder(folderPath) {
   try {
-    if (typeof folderPath === "undefined") throw "[SharepointPlus 'createFolder']: the folder path is required.";
+    if (typeof folderPath === "undefined") throw "[SharepointSharp 'createFolder']: the folder path is required.";
     // split the path based on '/'
     // eslint-disable-next-line
     let path=folderPath.replace(/[\*\?\|:"'<>#{}%~&]/g,"").replace(/^[\. ]+|[\. ]+$/g,"").replace(/ {2,}/g," ").replace(/\.{2,}/g,"."), toAdd=[], tmpPath="", i;

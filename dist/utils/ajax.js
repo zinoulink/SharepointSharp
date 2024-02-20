@@ -226,14 +226,14 @@ function _ajax() {
             break;
 
           case 51:
-            throw "[SharepointPlus 'ajax'] please use `$SP().auth()` to provide your authentication method first";
+            throw "[SharepointSharp 'ajax'] please use `$SP().auth()` to provide your authentication method first";
 
           case 52:
             if (settings.headers['Content-Type'] && (0, _indexOf.default)(_context6 = settings.headers['Content-Type']).call(_context6, 'xml') > -1) settings.headers['Accept'] = 'application/xml, text/xml, */*; q=0.01';
             if (!settings.method) settings.method = typeof settings.body !== "undefined" ? "POST" : "GET";
             if (settings.method.toUpperCase() === "POST" && typeof settings.body !== "undefined") settings.headers['Content-Length'] = Buffer.byteLength(settings.body); // add User Agent
 
-            settings.headers['User-Agent'] = 'SharepointPlus'; //'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0';
+            settings.headers['User-Agent'] = 'SharepointSharp'; //'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0';
             // do some changes in the options: https://github.com/s-KaiNet/sp-request/blob/master/UpgradeTo3x.md
 
             opts = {

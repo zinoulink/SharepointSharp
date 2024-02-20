@@ -45,7 +45,7 @@ function _groupMembers() {
               break;
             }
 
-            throw "[SharepointPlus 'groupMembers'] the groupname is required.";
+            throw "[SharepointSharp 'groupMembers'] the groupname is required.";
 
           case 3:
             // default values

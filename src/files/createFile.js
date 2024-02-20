@@ -94,7 +94,7 @@ import cloneObject from '../utils/cloneObject.js'
     })).then(function(files) {
       // upload files
       return Promise.all(files.map(function(file) {
-        return $SP().list("SharepointPlusLibrary").createFile({
+        return $SP().list("SharepointSharpLibrary").createFile({
           content:file.content,
           filename:file.name,
           progress:function(perc) {
@@ -106,7 +106,7 @@ import cloneObject from '../utils/cloneObject.js'
   }
 
   // if you want to add some headers, for example for authentication method
-  $SP().list("SharepointPlusLibrary").createFile({
+  $SP().list("SharepointSharpLibrary").createFile({
     content:file.content,
     filename:file.name,
     getXHR:function(xhr) {
@@ -120,10 +120,10 @@ export default async function createFile(setup) {
   // default values
   setup = setup || {};
   try {
-    if (typeof setup.content === "undefined") throw "[SharepointPlus 'createFile']: the file content is required.";
-    if (typeof setup.filename === "undefined") throw "[SharepointPlus 'createFile']: the filename is required.";
-    if (!this.listID) throw "[SharepointPlus 'createFile']: the library name is required.";
-    if (!this.url) throw "[SharepointPlus 'createFile']: not able to find the URL!"; // we cannot determine the url
+    if (typeof setup.content === "undefined") throw "[SharepointSharp 'createFile']: the file content is required.";
+    if (typeof setup.filename === "undefined") throw "[SharepointSharp 'createFile']: the filename is required.";
+    if (!this.listID) throw "[SharepointSharp 'createFile']: the library name is required.";
+    if (!this.url) throw "[SharepointSharp 'createFile']: not able to find the URL!"; // we cannot determine the url
     setup.extendedFields = setup.extendedFields || "";
     setup.progress=setup.progress||function(){};
     setup.getXHR=setup.getXHR||function(){};
@@ -193,7 +193,7 @@ export default async function createFile(setup) {
       let a = data.getElementsByTagName('CopyResult');
       a = (a.length>0 ? a[0] : null);
       if (a && a.getAttribute("ErrorCode") !== "Success") {
-        return Promise.reject("[SharepointPlus 'createFile'] Error creating ("+destination+"): "+a.getAttribute("ErrorCode")+" - "+a.getAttribute("ErrorMessage"));
+        return Promise.reject("[SharepointSharp 'createFile'] Error creating ("+destination+"): "+a.getAttribute("ErrorCode")+" - "+a.getAttribute("ErrorMessage"));
       } else {
         return Promise.resolve({Url:destination, Name:setup.filename});
       }

@@ -20,12 +20,12 @@ import _buildBodyForSOAP from './_buildBodyForSOAP.js'
 export default async function views(options) {
   try {
     // check if we need to queue it
-    if (!this.listID) throw "[SharepointPlus 'views'] the list ID/Name is required.";
+    if (!this.listID) throw "[SharepointSharp 'views'] the list ID/Name is required.";
     options = options||{};
     options.cache = (options.cache === false ? false : true);
 
     // default values
-    if (!this.url) throw "[SharepointPlus 'views'] not able to find the URL!"; // we cannot determine the url
+    if (!this.url) throw "[SharepointSharp 'views'] not able to find the URL!"; // we cannot determine the url
 
     // check the cache
     let found=false;

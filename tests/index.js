@@ -1,5 +1,5 @@
 // old a previous version to set up the test environment
-const $SP = require('../../sharepointplus-online/dist');
+const $SP = require('../../SharepointSharp-online/dist');
 // we load $SP for testing
 const _$SP = require("esm")(module)("../src/index.js").default;
 const commandLineArgs = require('command-line-args');
@@ -78,7 +78,7 @@ var prompt = require('prompt');
 
   // create the test lists
   function createList(list) {
-    list = list || "SharepointPlus";
+    list = list || "SharepointSharp";
 
     console.log("Test Environment Setup: creating list '"+list+"'...");
 
@@ -102,12 +102,12 @@ var prompt = require('prompt');
       // to serialize to a string the result
       // var xmlserializer = require('xmlserializer');
       // console.log(xmlserializer.serializeToString(res.documentElement))
-      // for "SharepointPlus" list we want to create the columns too
-      if (list === "SharepointPlus") {
+      // for "SharepointSharp" list we want to create the columns too
+      if (list === "SharepointSharp") {
         // get the list ID
         let listID = res.Id;
 
-        console.log("Test Environment Setup: creating columns in 'SharepointPlus' list...");
+        console.log("Test Environment Setup: creating columns in 'SharepointSharp' list...");
 
         let fields = [];
         fields.push({"DisplayName":"Single line of text", "Type":"Text", "Required":"TRUE"});
@@ -172,7 +172,7 @@ var prompt = require('prompt');
               }
             }
           }
-          fieldsToAdd += ' Description="Field created for tests with SharepointPlus">' + options + '</Field>'
+          fieldsToAdd += ' Description="Field created for tests with SharepointSharp">' + options + '</Field>'
           fieldsToAdd += '</Method>';
         }
         fieldsToAdd += '</Fields>';*/
@@ -228,9 +228,9 @@ var prompt = require('prompt');
             })
           })
         }
-      } else if (list === "SharepointPlusLookup") {
-        // add some items in SharepointPlusLookup
-        console.log("Test Environment Setup: adding items in 'SharepointPlusLookup'...");
+      } else if (list === "SharepointSharpLookup") {
+        // add some items in SharepointSharpLookup
+        console.log("Test Environment Setup: adding items in 'SharepointSharpLookup'...");
         return sp.list(list, optionsCLI.url).add([ {Title:'Option 1'}, {Title:'Option 2'}, {Title:'Option 3'} ]);
       }
     })
@@ -242,12 +242,12 @@ var prompt = require('prompt');
       // check if the test lists already exist, otherwise create them
       let lists = await sp.lists({url:optionsCLI.url});
       let listNames = lists.map(list => list.Title);
-      for (let list of ["SharepointPlusLookup", "SharepointPlus", "SharepointPlusLibrary", "SharepointPlus Calendar"]) {
+      for (let list of ["SharepointSharpLookup", "SharepointSharp", "SharepointSharpLibrary", "SharepointSharp Calendar"]) {
         if (!listNames.includes(list)) {
           await createList(list);
         } else {
-          // for SharepointPlusLibrary we want to delete it first, if we have data
-          if (list === "SharepointPlusLibrary") {
+          // for SharepointSharpLibrary we want to delete it first, if we have data
+          if (list === "SharepointSharpLibrary") {
             await sp.ajax({
               url: optionsCLI.url + "/_api/web/lists/GetByTitle('"+list+"')",
               method:"POST",
@@ -261,8 +261,8 @@ var prompt = require('prompt');
         }
       }
 
-      // check if the permissions group "SharepointPlus" exists
-      console.log("Test Environment Setup: checking user group 'SharepointPlus'...");
+      // check if the permissions group "SharepointSharp" exists
+      console.log("Test Environment Setup: checking user group 'SharepointSharp'...");
       try {
         await sp.ajax({
           url:optionsCLI.url+"/_api/web/sitegroups",
@@ -272,17 +272,17 @@ var prompt = require('prompt');
           },
           body:JSON.stringify({
             '__metadata':{'type': 'SP.Group'},
-            'Title': "SharepointPlus",
-            'Description': "Group for SharepointPlus tests"
+            'Title': "SharepointSharp",
+            'Description': "Group for SharepointSharp tests"
           })
         });
       } catch(err) {}
 
-      console.log("### PLEASE ADD YOURSELF IN THE 'SharepointPlus' group ###");
+      console.log("### PLEASE ADD YOURSELF IN THE 'SharepointSharp' group ###");
 
       console.log("Test Environment Setup: configuring 'Tests.aspx' in 'Site Pages'...");
       // we delete it and readd it with the last version of the library
-      await sp.list("Site Pages", optionsCLI.url).remove({where:"FileLeafRef = 'Tests.aspx' OR FileLeafRef LIKE 'sharepointplus.' OR FileLeafRef LIKE 'sptests.'"});
+      await sp.list("Site Pages", optionsCLI.url).remove({where:"FileLeafRef = 'Tests.aspx' OR FileLeafRef LIKE 'SharepointSharp.' OR FileLeafRef LIKE 'sptests.'"});
 
       await sp.list("Site Pages", optionsCLI.url).createFile({
         filename:'Tests.aspx',
@@ -292,7 +292,7 @@ var prompt = require('prompt');
                   <script src="/sites/Educate/Style%20Library/Standard/MasterPage.min.js" type="text/javascript"></script>
                 </asp:Content>
                 <asp:Content ContentPlaceHolderId="PlaceHolderPageTitle" runat="server">
-                  SharepointPlus Tests Page
+                  SharepointSharp Tests Page
                 </asp:Content>
                 <asp:Content ContentPlaceHolderID="PlaceHolderLeftNavBar" runat="Server"></asp:Content>
                 <asp:Content ContentPlaceHolderId="PlaceHolderMain" runat="server">
@@ -300,9 +300,9 @@ var prompt = require('prompt');
                 </asp:Content>`
       });
 
-      // create a sharepointplus.js file
-      let spContent = fs.readFileSync(path.resolve('../browser/sharepointplus.js'));
-      let spFileName = 'sharepointplus.'+Date.now()+'.js';
+      // create a SharepointSharp.js file
+      let spContent = fs.readFileSync(path.resolve('../browser/SharepointSharp.js'));
+      let spFileName = 'SharepointSharp.'+Date.now()+'.js';
       await sp.list("Site Pages", optionsCLI.url).createFile({
         filename:spFileName,
         content:spContent
@@ -402,10 +402,10 @@ var prompt = require('prompt');
     await testEnvironment();
     // do a quick test with Node
     let data = await _sp.list("Site Pages", optionsCLI.url).get({
-      where:"BaseName = 'Tests.aspx' OR BaseName LIKE 'sharepointplus.' OR BaseName LIKE 'sptests.'"
+      where:"BaseName = 'Tests.aspx' OR BaseName LIKE 'SharepointSharp.' OR BaseName LIKE 'sptests.'"
     })
-    if (data.length === 3) console.log("SharepointPlus Node Test: Success :-)");
-    else console.log("SharepointPlus Node Test: Failed :-(");
+    if (data.length === 3) console.log("SharepointSharp Node Test: Success :-)");
+    else console.log("SharepointSharp Node Test: Failed :-(");
 
     process.stderr.write("\x07"); // beep
     console.log("Open this URL to run the tests: \x1b[36m"+optionsCLI.url+"/SitePages/Tests.aspx\x1b[0m");

@@ -16,9 +16,9 @@ import ajax from '../utils/ajax.js'
   });
 */
 export default async function getVersions(itemID) {
-  if (!this.listID) throw "[SharepointPlus 'getVersions'] the list ID/Name is required.";
-  if (!this.url) throw "[SharepointPlus 'getVersions'] not able to find the URL!"; // we cannot determine the url
-  if (!itemID) throw "[SharepointPlus 'getVersions'] the item ID is required.";
+  if (!this.listID) throw "[SharepointSharp 'getVersions'] the list ID/Name is required.";
+  if (!this.url) throw "[SharepointSharp 'getVersions'] not able to find the URL!"; // we cannot determine the url
+  if (!itemID) throw "[SharepointSharp 'getVersions'] the item ID is required.";
 
   return ajax.call(this, {
     url:this.url + "/_api/lists/getbytitle('"+this.listID+"')/Items("+itemID+")/Versions"

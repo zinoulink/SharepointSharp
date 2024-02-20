@@ -53,7 +53,7 @@ function _startWorkflow() {
               break;
             }
 
-            throw "[SharepointPlus 'startWorkflow'] not able to find the URL!";
+            throw "[SharepointSharp 'startWorkflow'] not able to find the URL!";
 
           case 3:
             if (this.listID) {
@@ -72,7 +72,7 @@ function _startWorkflow() {
               break;
             }
 
-            throw "[SharepointPlus 'startWorkflow'] Please provide the workflow name";
+            throw "[SharepointSharp 'startWorkflow'] Please provide the workflow name";
 
           case 9:
             if (setup.ID) {
@@ -80,7 +80,7 @@ function _startWorkflow() {
               break;
             }
 
-            throw "[SharepointPlus 'startWorkflow'] Please provide the item ID";
+            throw "[SharepointSharp 'startWorkflow'] Please provide the item ID";
 
           case 11:
             if (!(!setup.fileRef && !setup.workflowID)) {

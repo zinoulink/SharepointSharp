@@ -63,7 +63,7 @@ function _views() {
               break;
             }
 
-            throw "[SharepointPlus 'views'] the list ID/Name is required.";
+            throw "[SharepointSharp 'views'] the list ID/Name is required.";
 
           case 3:
             options = options || {};
@@ -74,7 +74,7 @@ function _views() {
               break;
             }
 
-            throw "[SharepointPlus 'views'] not able to find the URL!";
+            throw "[SharepointSharp 'views'] not able to find the URL!";
 
           case 7:
             // we cannot determine the url

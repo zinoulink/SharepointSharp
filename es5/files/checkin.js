@@ -21,7 +21,7 @@ import _buildBodyForSOAP from '../lists/_buildBodyForSOAP.js';
   // with Promise
   $SP().checkin({
     destination:"http://mysite/Shared Documents/myfile.txt",
-    comments:"Automatic check in with SharepointPlus"
+    comments:"Automatic check in with SharepointSharp"
   }).then(function() {
     alert("Done");
   }).catch(function(error) {
@@ -50,7 +50,7 @@ function _checkin() {
               break;
             }
 
-            throw "[SharepointPlus 'checkin'] the file destination path is required.";
+            throw "[SharepointSharp 'checkin'] the file destination path is required.";
 
           case 4:
             if (this.url && !setup.url) setup.url = this.url;

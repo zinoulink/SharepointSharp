@@ -34,7 +34,7 @@ function _getVersions() {
               break;
             }
 
-            throw "[SharepointPlus 'getVersions'] the list ID/Name is required.";
+            throw "[SharepointSharp 'getVersions'] the list ID/Name is required.";
 
           case 2:
             if (this.url) {
@@ -42,7 +42,7 @@ function _getVersions() {
               break;
             }
 
-            throw "[SharepointPlus 'getVersions'] not able to find the URL!";
+            throw "[SharepointSharp 'getVersions'] not able to find the URL!";
 
           case 4:
             if (itemID) {
@@ -50,7 +50,7 @@ function _getVersions() {
               break;
             }
 
-            throw "[SharepointPlus 'getVersions'] the item ID is required.";
+            throw "[SharepointSharp 'getVersions'] the item ID is required.";
 
           case 6:
             return _context.abrupt("return", ajax.call(this, {

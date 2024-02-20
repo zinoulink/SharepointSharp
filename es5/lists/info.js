@@ -18,8 +18,8 @@ import _buildBodyForSOAP from './_buildBodyForSOAP.js';
 
 export default function info() {
   // check if we need to queue it
-  if (!this.listID) throw "[SharepointPlus 'info'] the list ID/Name is required.";
-  if (!this.url) throw "[SharepointPlus 'info'] not able to find the URL!"; // we cannot determine the url
+  if (!this.listID) throw "[SharepointSharp 'info'] the list ID/Name is required.";
+  if (!this.url) throw "[SharepointSharp 'info'] not able to find the URL!"; // we cannot determine the url
   // do the request
 
   return ajax.call(this, {

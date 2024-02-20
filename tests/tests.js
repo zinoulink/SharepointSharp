@@ -25,18 +25,18 @@ describe('Lists', function() {
     .then(function(lists) {
       var passed=false;
       for (var i=lists.length; i--;) {
-        if (lists[i]['Name'] === "SharepointPlus") {
+        if (lists[i]['Name'] === "SharepointSharp") {
           passed=true;
           break
         }
       }
-      assert(passed, 'Unable to find the list called "SharepointPlus"');
+      assert(passed, 'Unable to find the list called "SharepointSharp"');
     });
   });
 
   var _viewID;
   it('$SP().list().views()', function() {
-    return $SP().list("SharepointPlus").views()
+    return $SP().list("SharepointSharp").views()
     .then(function(views) {
       var passed=false;
       for (var i=views.length; i--;) {
@@ -46,21 +46,21 @@ describe('Lists', function() {
           break;
         }
       }
-      assert(passed, 'Unable to find the view called "All Items" in "SharepointPlus"');
+      assert(passed, 'Unable to find the view called "All Items" in "SharepointSharp"');
     });
   });
 
   it('$SP().list().view()', function() {
-    return $SP().list("SharepointPlus").view("All Items")
+    return $SP().list("SharepointSharp").view("All Items")
     .then(function(view) {
-      assert(view.ID === _viewID, 'The "view.ID" ('+view.ID+') should be equal to "'+_viewID+'" for the view called "All Items" in "SharepointPlus"');
+      assert(view.ID === _viewID, 'The "view.ID" ('+view.ID+') should be equal to "'+_viewID+'" for the view called "All Items" in "SharepointSharp"');
     });
   });
 
   var itemID;
   var title = new Date().getTime();
   it('$SP().list().add()', function() {
-    return $SP().list("SharepointPlus").add({'Title':'Add','Single_x0020_line_x0020_of_x0020':title,'Multiple_x0020_lines_x0020_of_x0':"test",'Lookup':'2;#Option 2'})
+    return $SP().list("SharepointSharp").add({'Title':'Add','Single_x0020_line_x0020_of_x0020':title,'Multiple_x0020_lines_x0020_of_x0':"test",'Lookup':'2;#Option 2'})
     .then(function(items) {
       if (items.failed.length > 0) {
         assert(false, "Unable to add a row, the server returned: "+items.failed[0].errorMessage);
@@ -69,7 +69,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get()', function() {
-    return $SP().list("SharepointPlus").get({fields:"ID,Title,Single_x0020_line_x0020_of_x0020",where:'Single_x0020_line_x0020_of_x0020 = "'+title+'"'})
+    return $SP().list("SharepointSharp").get({fields:"ID,Title,Single_x0020_line_x0020_of_x0020",where:'Single_x0020_line_x0020_of_x0020 = "'+title+'"'})
     .then(function(data) {
       if (data.length === 1) {
         itemID = data[0].getAttribute("ID");
@@ -78,7 +78,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().update()', function() {
-    return $SP().list("SharepointPlus").update({'ID':itemID,'Title':'testUpdate','Multiple_x0020_lines_x0020_of_x0':"next"})
+    return $SP().list("SharepointSharp").update({'ID':itemID,'Title':'testUpdate','Multiple_x0020_lines_x0020_of_x0':"next"})
     .then(function(items) {
       if (items.failed.length > 0) {
         assert(false, "Unable to update a row, the server returned: "+items.failed[0].errorMessage);
@@ -87,29 +87,29 @@ describe('Lists', function() {
   });
 
   it('$SP().list().addAttachment()', function() {
-    return $SP().list("SharepointPlus").addAttachment({
+    return $SP().list("SharepointSharp").addAttachment({
       ID:itemID,
       filename:".   helloworld < with special characters & too long.... really too long but this is* required for testing purposes~ at 100% a little bit more and we're good for testing....txt  ",
       attachment:str2ab('Hello World')
     })
     .then(function(fileURL) {
-      assert(fileURL.indexOf("/Lists/SharepointPlus/Attachments/"+itemID+"/helloworld with special characters too long. really too long but this is required for testing purposes at 100 a lit__ting.txt")>-1);
+      assert(fileURL.indexOf("/Lists/SharepointSharp/Attachments/"+itemID+"/helloworld with special characters too long. really too long but this is required for testing purposes at 100 a lit__ting.txt")>-1);
     })
   });
 
   var fileURL;
   it('$SP().list().getAttachment()', function() {
-    return $SP().list("SharepointPlus").getAttachment(itemID)
+    return $SP().list("SharepointSharp").getAttachment(itemID)
     .then(function(attachments) {
       if (attachments.length===1) fileURL=attachments[0];
-      assert(attachments.length===1 && attachments[0].indexOf("Lists/SharepointPlus/Attachments/"+itemID+"/helloworld with special characters too long. really too long but this is required for testing purposes at 100 a lit__ting.txt") > -1);
+      assert(attachments.length===1 && attachments[0].indexOf("Lists/SharepointSharp/Attachments/"+itemID+"/helloworld with special characters too long. really too long but this is required for testing purposes at 100 a lit__ting.txt") > -1);
     })
   });
 
   it('$SP().list().removeAttachment()', function() {
-    return $SP().list("SharepointPlus").removeAttachment({ID:itemID, fileURL:fileURL})
+    return $SP().list("SharepointSharp").removeAttachment({ID:itemID, fileURL:fileURL})
     .then(function(res) {
-      return $SP().list("SharepointPlus").getAttachment(itemID)
+      return $SP().list("SharepointSharp").getAttachment(itemID)
     })
     .then(function(attachments) {
       assert(attachments.length===0);
@@ -117,7 +117,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().history()', function() {
-    return $SP().list("SharepointPlus").history({ID:itemID, Name:"Multiple_x0020_lines_x0020_of_x0"})
+    return $SP().list("SharepointSharp").history({ID:itemID, Name:"Multiple_x0020_lines_x0020_of_x0"})
     .then(function(data) {
       var passed=false;
       for (var i=0,len=data.length; i<len; i++) {
@@ -131,7 +131,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().info()', function() {
-    return $SP().list("SharepointPlus").info()
+    return $SP().list("SharepointSharp").info()
     .then(function(infos) {
       var passed=false;
       for (var i=0; i<infos.length; i++) {
@@ -145,7 +145,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().getContentTypes()', function() {
-    return $SP().list("SharepointPlus").getContentTypes()
+    return $SP().list("SharepointSharp").getContentTypes()
     .then(function(contentTypes) {
       var passed=false;
       for (var i=0; i<contentTypes.length; i++) {
@@ -159,7 +159,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().getContentTypeInfo()', function() {
-    return $SP().list("SharepointPlus").getContentTypeInfo("Item")
+    return $SP().list("SharepointSharp").getContentTypeInfo("Item")
     .then(function(fields) {
       var passed=false;
       for (var i=0; i<fields.length; i++) {
@@ -177,8 +177,8 @@ describe('Lists', function() {
       service:"Lists",
       operation:"UpdateList",
       properties:{
-        listName:"SharepointPlus",
-        listProperties:'<List Title="SharepointPlus" EnableModeration="True" />',
+        listName:"SharepointSharp",
+        listProperties:'<List Title="SharepointSharp" EnableModeration="True" />',
         newFields:"",
         updateFields:"",
         deleteFields:"",
@@ -186,10 +186,10 @@ describe('Lists', function() {
       }
     })
     .then(function() {
-      return $SP().list("SharepointPlus").update({'ID':itemID,'Title':'testModeration'})
+      return $SP().list("SharepointSharp").update({'ID':itemID,'Title':'testModeration'})
     })
     .then(function() {
-      return $SP().list("SharepointPlus").moderate({ID:itemID, ApprovalStatus:"Rejected"})
+      return $SP().list("SharepointSharp").moderate({ID:itemID, ApprovalStatus:"Rejected"})
     })
     .then(function(items) {
       var passed=false;
@@ -205,7 +205,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().remove()', function() {
-    return $SP().list("SharepointPlus").remove({'ID':itemID})
+    return $SP().list("SharepointSharp").remove({'ID':itemID})
     .then(function(items) {
       assert(items.passed.length>0);
     })
@@ -213,7 +213,7 @@ describe('Lists', function() {
 
   it('$SP().list().add() Multiple', function() {
     var testProgressOK = false;
-    return $SP().list("SharepointPlus").add([{Title:"Multiple " + title}, {Title:"Multiple " + title}, {Title:"Multiple " + title}, {Title:"Multiple " + title}, {Title:"Multiple " + title, 'Lookup':'2;#Option 2'}], {
+    return $SP().list("SharepointSharp").add([{Title:"Multiple " + title}, {Title:"Multiple " + title}, {Title:"Multiple " + title}, {Title:"Multiple " + title}, {Title:"Multiple " + title, 'Lookup':'2;#Option 2'}], {
       packetsize:2,
       progress:function(n, total) {
         if (n === 5 && total === 5) {
@@ -229,52 +229,52 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with "outerjoin"', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID,Lookup",
       where:"ID = "+itemID,
       outerjoin:{
-        list:"SharepointPlusLookup",
+        list:"SharepointSharpLookup",
         fields:"ID",
-        on:"'SharepointPlusLookup'.ID = 'SharepointPlus'.Lookup"
+        on:"'SharepointSharpLookup'.ID = 'SharepointSharp'.Lookup"
       },
     })
     .then(function(data) {
-      assert(data.length===1 && data[0].getAttribute("SharepointPlus.Lookup").split(";#")[0]==data[0].getAttribute("SharepointPlusLookup.ID"));
+      assert(data.length===1 && data[0].getAttribute("SharepointSharp.Lookup").split(";#")[0]==data[0].getAttribute("SharepointSharpLookup.ID"));
     })
   });
 
   it('$SP().list().get() with "innerjoin"/"onLookup"', function() {
-    return $SP().list("SharepointPlusLookup").get({
+    return $SP().list("SharepointSharpLookup").get({
       fields:"ID,Title",
       innerjoin:{
-        list:"SharepointPlus",
+        list:"SharepointSharp",
         fields:"ID,Title",
         onLookup:"Lookup"
       }
     })
     .then(function(data) {
-      assert(data.length>0 && data[0].getAttribute("SharepointPlus.Lookup").split(";#")[0]==data[0].getAttribute("SharepointPlusLookup.ID"));
+      assert(data.length>0 && data[0].getAttribute("SharepointSharp.Lookup").split(";#")[0]==data[0].getAttribute("SharepointSharpLookup.ID"));
     })
   });
 
   it('$SP().list().get() with "alias"', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID,Lookup",
       where:"ID = "+itemID,
       outerjoin:{
-        list:"SharepointPlusLookup",
+        list:"SharepointSharpLookup",
         alias:"SPL",
         fields:"ID",
-        on:"'SPL'.ID = 'SharepointPlus'.Lookup"
+        on:"'SPL'.ID = 'SharepointSharp'.Lookup"
       },
     })
     .then(function(data) {
-      assert(data.length>0 && data[0].getAttribute("SharepointPlus.Lookup").split(";#")[0]==data[0].getAttribute("SPL.ID"));
+      assert(data.length>0 && data[0].getAttribute("SharepointSharp.Lookup").split(";#")[0]==data[0].getAttribute("SPL.ID"));
     })
   });
 
   it('$SP().list().get() with "[Me]"', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       where:"Author = '[Me]'"
     })
@@ -284,7 +284,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with "[Today-1]"', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       where:"Created > '[Today-1]'"
     })
@@ -294,7 +294,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with a view', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       view:'All Items'
     })
     .then(function(data) {
@@ -303,7 +303,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with rowlimit', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       rowlimit:1
     })
     .then(function(data) {
@@ -312,7 +312,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with page', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       rowlimit:1,
       paging:true,
@@ -326,7 +326,7 @@ describe('Lists', function() {
 
   it('$SP().list().get() with where as an array', function() {
     var testProgressOK = false;
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       where:["ID = "+(itemID-1), "ID = "+itemID],
       progress:function (current, max) {
@@ -342,7 +342,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with ~', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       where:"Editor ~= "+_spPageContextInfo.userId
     })
@@ -352,11 +352,11 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with merge', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       where:"ID = "+(itemID-1),
       merge:[{
-        list:"SharepointPlus",
+        list:"SharepointSharp",
         fields:"ID",
         where:"ID = "+itemID
       }]
@@ -368,7 +368,7 @@ describe('Lists', function() {
 
   it('$SP().list().get() with whereFct', function() {
     var whereOK=false;
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       where:"ID > 0",
       whereFct:function(w) {
@@ -383,7 +383,7 @@ describe('Lists', function() {
 
   it('$SP().list().get() with whereCAML', function() {
     var whereOK=false;
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:"ID",
       where:'<Eq><FieldRef Name="ID" /><Value Type="Number">'+itemID+'</Value></Eq>',
       whereCAML:true
@@ -395,7 +395,7 @@ describe('Lists', function() {
 
   it('$SP().list().get() with orderby and expandUserField', function() {
     var whereOK=false;
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:["ID","Author"],
       orderby:'ID DESC',
       expandUserField:true
@@ -407,17 +407,17 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with showListInAttribute', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:["ID"],
       showListInAttribute:true
     })
     .then(function(data) {
-      assert(data.length > 0 && data[0].getAttribute("SharepointPlus.ID") > 0);
+      assert(data.length > 0 && data[0].getAttribute("SharepointSharp.ID") > 0);
     })
   });
 
   it('$SP().list().get() with json', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:["ID"],
       json:true
     })
@@ -427,19 +427,19 @@ describe('Lists', function() {
   });
 
   it('$SP().list().get() with showListInAttribute and json', function() {
-    return $SP().list("SharepointPlus").get({
+    return $SP().list("SharepointSharp").get({
       fields:["ID"],
       json:true,
       showListInAttribute:true
     })
     .then(function(data) {
-      assert(data.length > 0 && data[0]["SharepointPlus.ID"] > 0);
+      assert(data.length > 0 && data[0]["SharepointSharp.ID"] > 0);
     })
   });
 
   it('$SP().list().update() Multiple', function() {
     var testProgressOK = false;
-    return $SP().list("SharepointPlus").update({Title:"Multiple Updated "+title}, {
+    return $SP().list("SharepointSharp").update({Title:"Multiple Updated "+title}, {
       where:"Title = 'Multiple "+title+"'",
       packetsize:2,
       progress:function(n, total) {
@@ -456,7 +456,7 @@ describe('Lists', function() {
 
   it('$SP().list().remove() Multiple', function() {
     var testProgressOK = false;
-    return $SP().list("SharepointPlus").remove({
+    return $SP().list("SharepointSharp").remove({
       where:"Title = 'Multiple Updated "+title+"'",
       packetsize:2,
       progress:function(n, total) {
@@ -472,7 +472,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().add() Multiple with failure', function() {
-    return $SP().list("SharepointPlus").add([{Title:"Multiple with failure " + title}, {Title:"Multiple with failure " + title}, {Title:"Multiple with failure " + title}, {UnknownColumn:"Failure"}, {Title:"Multiple with failure " + title}], {
+    return $SP().list("SharepointSharp").add([{Title:"Multiple with failure " + title}, {Title:"Multiple with failure " + title}, {Title:"Multiple with failure " + title}, {UnknownColumn:"Failure"}, {Title:"Multiple with failure " + title}], {
       packetsize:2,
       breakOnFailure:true
     })
@@ -482,7 +482,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().update() Multiple with failure', function() {
-    return $SP().list("SharepointPlus").update({UnknownColumn:"Failure"}, {
+    return $SP().list("SharepointSharp").update({UnknownColumn:"Failure"}, {
       where:"Title = 'Multiple with failure " + title + "'",
       packetsize:2,
       breakOnFailure:true
@@ -493,7 +493,7 @@ describe('Lists', function() {
   });
 
   it('$SP().list().remove() All', function() {
-    return $SP().list("SharepointPlus").remove({
+    return $SP().list("SharepointSharp").remove({
       where:"ID > 0"
     })
     .then(function(items) {
@@ -503,7 +503,7 @@ describe('Lists', function() {
 
   it('$SP().list().hasPermission("deleteListItems")', function() {
     // check permissions
-    return $SP().list('SharepointPlus').hasPermission('deleteListItems')
+    return $SP().list('SharepointSharp').hasPermission('deleteListItems')
     .then(function(res) {
       assert(res===true);
     })
@@ -511,7 +511,7 @@ describe('Lists', function() {
 
   it('$SP().list().hasPermission(["addListItems","editListItems"])', function() {
     // check permissions
-    return $SP().list('SharepointPlus').hasPermission(['addListItems','editListItems'])
+    return $SP().list('SharepointSharp').hasPermission(['addListItems','editListItems'])
     .then(function(res) {
       assert(res.addListItems===true && res.editListItems);
     })
@@ -554,7 +554,7 @@ describe('Calendar', function() {
   var itemID;
   var title = new Date().getTime();
   it('$SP().list().add()', function() {
-    return $SP().list("SharepointPlus Calendar").add({
+    return $SP().list("SharepointSharp Calendar").add({
       Title:title,
       EventDate:"2018-12-20 10:00:00",
       EndDate:"2019-12-31 11:00:00",
@@ -574,7 +574,7 @@ describe('Calendar', function() {
   });
 
   it('$SP().list().get() (1)', function() {
-    return $SP().list("SharepointPlus Calendar").get({
+    return $SP().list("SharepointSharp Calendar").get({
       fields:"Title",
       calendar:true,
       calendarOptions:{
@@ -599,7 +599,7 @@ describe('Calendar', function() {
   });
 
   it('$SP().list().update()', function() {
-    return $SP().list("SharepointPlus Calendar").update({
+    return $SP().list("SharepointSharp Calendar").update({
       Title:'Special',
       EventDate:$SP().toSPDate(new Date(2019,2,25,14,0,0), true), // the new start date for the meeting (2pm)
       EndDate:$SP().toSPDate(new Date(2019,2,25,15,0,0), true) // the new end date for the meeting (3pm)
@@ -618,7 +618,7 @@ describe('Calendar', function() {
   // if you want to delete one occurrence of a recurrent event you must use option "event"
   // e.g. you have an event #1589 that occurs every weekday, from 9am to 10am, but you want to delete the one on December 17, 2018
   it('$SP().list().remove()', function() {
-    return $SP().list("SharepointPlus Calendar").remove({
+    return $SP().list("SharepointSharp Calendar").remove({
       where:'ID = '+itemID, // the criteria that permits to identify your master recurrent event -- IT IS REQUIRED
       event:"2019-03-29 10:00:00" // date of the event that needs to be deleted, it can be the "RecurrenceID"
     })
@@ -628,7 +628,7 @@ describe('Calendar', function() {
   });
 
   it('$SP().list().get() (2)', function() {
-    return $SP().list("SharepointPlus Calendar").get({
+    return $SP().list("SharepointSharp Calendar").get({
       fields:"Title",
       calendar:true,
       calendarOptions:{
@@ -647,7 +647,7 @@ describe('Calendar', function() {
 
   it('$SP().list().remove() (all)', function() {
     // delete all
-    return $SP().list('SharepointPlus Calendar').remove({ID:itemID})
+    return $SP().list('SharepointSharp Calendar').remove({ID:itemID})
     .then(function(items) {
       assert(items.passed.length>0);
     })
@@ -658,7 +658,7 @@ describe('Document/File', function() {
   this.timeout(5000);
 
   var filename = new Date().getTime() + ".txt";
-  var library = "SharepointPlusLibrary";
+  var library = "SharepointSharpLibrary";
   var path = library + "/" + filename;
   var file;
   var folderName = "folder_"+Date.now();
@@ -697,7 +697,7 @@ describe('Document/File', function() {
     })
     .then(function() {
       // verify
-      return $SP().list("SharepointPlusLibrary").get({
+      return $SP().list("SharepointSharpLibrary").get({
         fields:"ID,CheckoutUser",
         where:'FileRef = "'+file.Url+'"'
       })
@@ -708,11 +708,11 @@ describe('Document/File', function() {
       // checkin
       return $SP().checkin({
         destination:file.Url,
-        comments:"Automatic check in with SharepointPlus"
+        comments:"Automatic check in with SharepointSharp"
       })
       .then(function() {
         // verify
-        return $SP().list("SharepointPlusLibrary").get({
+        return $SP().list("SharepointSharpLibrary").get({
           fields:"ID,CheckoutUser",
           where:'FileRef = "'+file.Url+'"'
         })
@@ -801,7 +801,7 @@ describe('People', function() {
 
   it('$SP().isMember()', function() {
     // test isMember()
-    return $SP().isMember({user:spusername, group:"SharepointPlus"})
+    return $SP().isMember({user:spusername, group:"SharepointSharp"})
     .then(function(isMember) {
       assert(isMember);
     });
@@ -809,7 +809,7 @@ describe('People', function() {
 
   it('$SP().groupMembers()', function() {
     // test groupMembers
-    return $SP().groupMembers("SharepointPlus")
+    return $SP().groupMembers("SharepointSharp")
     .then(function(members) {
       var passed=false;
       for (var i=members.length; i--;) {
@@ -974,28 +974,28 @@ function deleteTestEnvironment() {
       service:"Lists",
       operation:"DeleteList",
       properties:{
-        listName: "SharepointPlus",
+        listName: "SharepointSharp",
       }
     }),
     $SP().webService({
       service:"Lists",
       operation:"DeleteList",
       properties:{
-        listName: "SharepointPlus Calendar",
+        listName: "SharepointSharp Calendar",
       }
     }),
     $SP().webService({
       service:"Lists",
       operation:"DeleteList",
       properties:{
-        listName: "SharepointPlusLookup",
+        listName: "SharepointSharpLookup",
       }
     }),
     $SP().webService({
       service:"Lists",
       operation:"DeleteList",
       properties:{
-        listName: "SharepointPlusLibrary",
+        listName: "SharepointSharpLibrary",
       }
     }),
     $SP().webService({
@@ -1003,13 +1003,13 @@ function deleteTestEnvironment() {
       operation:"RemoveGroup",
       soapURL:"http://schemas.microsoft.com/sharepoint/soap/directory/",
       properties:{
-        groupName: "SharepointPlus",
+        groupName: "SharepointSharp",
       }
     })
   ])
   .then(function() {
     return $SP().list("Site Pages").remove({
-      where:"BaseName = 'Tests.aspx' OR BaseName LIKE 'sharepointplus.' OR BaseName LIKE 'sptests.' OR BaseName LIKE 'mocha.' OR BaseName LIKE 'chai.'"
+      where:"BaseName = 'Tests.aspx' OR BaseName LIKE 'SharepointSharp.' OR BaseName LIKE 'sptests.' OR BaseName LIKE 'mocha.' OR BaseName LIKE 'chai.'"
     });
   })
   .then(function() {

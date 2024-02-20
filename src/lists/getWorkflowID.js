@@ -19,15 +19,15 @@ import get from './get.js'
  */
 export default async function getWorkflowID(setup) {
   try {
-    if (!this.listID) throw "[SharepointPlus 'getWorkflowID'] the list ID/Name is required.";
-    if (!this.url) throw "[SharepointPlus 'getWorkflowID'] not able to find the URL!"; // we cannot determine the url
+    if (!this.listID) throw "[SharepointSharp 'getWorkflowID'] the list ID/Name is required.";
+    if (!this.url) throw "[SharepointSharp 'getWorkflowID'] not able to find the URL!"; // we cannot determine the url
     setup = setup || {};
-    if (!setup.ID || !setup.workflowName) throw "[SharepointPlus 'getWorkflowID'] all parameters are mandatory";
+    if (!setup.ID || !setup.workflowName) throw "[SharepointSharp 'getWorkflowID'] all parameters are mandatory";
 
     // find the fileRef
     let d = await get.call(this, {fields:"FieldRef",where:"ID = "+setup.ID});
 
-    if (d.length===0) throw "[SharepointPlus 'getWorkflowID'] I'm not able to find the item ID "+setup.ID;
+    if (d.length===0) throw "[SharepointSharp 'getWorkflowID'] I'm not able to find the item ID "+setup.ID;
 
     let fileRef = this.cleanResult(d[0].getAttribute("FileRef"));
     if(!this.url.startsWith("http")) {
@@ -47,7 +47,7 @@ export default async function getWorkflowID(setup) {
     // we want to use myElem to change the getAttribute function
     let res={},i,rows=data.getElementsByTagName('WorkflowTemplate');
     if (rows.length===0) {
-      if (typeof SP === "undefined") throw "[SharepointPlus 'getWorkflowID'] This function must be executed from a Sharepoint page (JSOM support is required).";
+      if (typeof SP === "undefined") throw "[SharepointSharp 'getWorkflowID'] This function must be executed from a Sharepoint page (JSOM support is required).";
       // depending of the permissions, we couldn't have the WorkflowTemplate data
       // in that case we have to get the workflow ID with another way
       let context = SP.ClientContext.get_current(); // eslint-disable-line
@@ -76,7 +76,7 @@ export default async function getWorkflowID(setup) {
           prom_res(res);
         },
         function() {
-          prom_rej("[SharepointPlus 'getWorkflowID'] Problem while dealing with SP.ClientContext.get_current()");
+          prom_rej("[SharepointSharp 'getWorkflowID'] Problem while dealing with SP.ClientContext.get_current()");
         });
       });
 
@@ -139,7 +139,7 @@ export default async function getWorkflowID(setup) {
       }
 
       if (!res.fileRef) {
-        throw "[SharepointPlus 'getWorkflowID'] it seems the requested workflow ('"+setup.workflowName+"') doesn't exist!";
+        throw "[SharepointSharp 'getWorkflowID'] it seems the requested workflow ('"+setup.workflowName+"') doesn't exist!";
       }
 
       return Promise.resolve(res);

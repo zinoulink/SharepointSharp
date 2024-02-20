@@ -21,7 +21,7 @@ import getURL from '../utils/getURL.js'
 */
 export default async function usergroups(username, setup) {
    try {
-    if (!username) throw "[SharepointPlus 'usergroups']: the username is required.";
+    if (!username) throw "[SharepointSharp 'usergroups']: the username is required.";
     setup = setup || {};
     setup.cache = (setup.cache === false ? false : true);
     if (!setup.url) {

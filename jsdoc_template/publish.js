@@ -410,7 +410,7 @@ var getCategories = function(data) {
           }
           // for tag "plugin"
           if (tag.title === "plugin") {
-            doclet.plugin = "To use this method you need to load the plugin `"+tag.text+"` from https://github.com/Aymkdn/SharepointPlus/tree/master/plugins/"+tag.text;
+            doclet.plugin = "To use this method you need to load the plugin `"+tag.text+"` from https://github.com/Aymkdn/SharepointSharp/tree/master/plugins/"+tag.text;
           }
         }
       }

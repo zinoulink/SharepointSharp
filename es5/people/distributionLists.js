@@ -44,7 +44,7 @@ function _distributionLists() {
               break;
             }
 
-            throw "[SharepointPlus 'distributionLists'] the username is required.";
+            throw "[SharepointSharp 'distributionLists'] the username is required.";
 
           case 3:
             // default values

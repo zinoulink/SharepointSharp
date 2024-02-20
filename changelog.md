@@ -10,14 +10,14 @@
   - Changed `$SP().cleanResult()` when dealing with a date (`$SP().cleanResult("2022-01-19 00:00:00")` will now return "2022-01-19" instead of "2022-01-19 00:00:00")
   - Changed `$SP().toDate()` to ignore the timezone (e.g. `$SP().toDate("2022-01-19")` used to return different result based on the user's timezone, but now it returns the correct date at 00:00:00 in the current timezone)
   - Changed `$SP().getVersions()`: only compatible with REST API, and it returns a different result/outcome than before
-  - Changed `$SP().hasREST()`: it will always return TRUE (it's possible to override the value) because REST API is around for a while now and I assume everyone is using at least SP2013 (see issue https://github.com/Aymkdn/SharepointPlus/issues/180)
-  - Fixed `$SP().isMember()` for the `url` option (see issue https://github.com/Aymkdn/SharepointPlus/issues/175)
+  - Changed `$SP().hasREST()`: it will always return TRUE (it's possible to override the value) because REST API is around for a while now and I assume everyone is using at least SP2013 (see issue https://github.com/Aymkdn/SharepointSharp/issues/180)
+  - Fixed `$SP().isMember()` for the `url` option (see issue https://github.com/Aymkdn/SharepointSharp/issues/175)
   - Removed support for IE10 in the bundle for browsers
 
 **Change Log v6.1.5 (March 5, 2021)**
 
   - Fixed `$SP().list().get()` when using `join` option and when there is no data in the left-list
-  - Fixed `$SP().list().setReadOnly()` (see https://github.com/Aymkdn/SharepointPlus/issues/166)
+  - Fixed `$SP().list().setReadOnly()` (see https://github.com/Aymkdn/SharepointSharp/issues/166)
 
 **Change Log v6.1.4 (February 1, 2021)**
 
@@ -27,34 +27,34 @@
   - Changed `$SP().list().stopWorkflow()` to not use `iframe` and make it work with NodeJS Server Application
   - Fixed a Sharepoint bug: if a list has the versioning enabled, then add/remove an attachment will created an empty version which could reset the values for the "Multiple Lines of Text" fields with "Append" option – `$SP().list().addAttachment()` and `$SP().list().removeAttachment()` will restore the previous version to avoid this buggy behavior
   - Fixed `$SP().list().get()` with option `json:true` to return an object for each item instead of an array of keys
-  - Fixed `$SP().list().getWorkflowID()` when there are more than 1 workflow for an item (see https://github.com/Aymkdn/SharepointPlus/issues/162)
+  - Fixed `$SP().list().getWorkflowID()` when there are more than 1 workflow for an item (see https://github.com/Aymkdn/SharepointSharp/issues/162)
 
 **Change Log v6.1.3 (January 8, 2021)**
 
   - Added `$SP().getServerTime()` to return the server time
-  - Added option `overwrite`  to ` $SP().list().createfile()` (see https://github.com/Aymkdn/SharepointPlus/issues/160)
+  - Added option `overwrite`  to ` $SP().list().createfile()` (see https://github.com/Aymkdn/SharepointSharp/issues/160)
   - Changed a behavior: when `$SP().list().get()` was called with some `outerjoin` and if there was a `where`, then the `outerjoin` was changed to `innerjoin`… I don't recall why, but this behavior doesn't seem right so I removed it
   - Fixed `merge` option with `join` option for `$SP().list().get()`
   - Fixed `merge` option with `json` option for `$SP().list().get()`
   - Fixed `view` option for `$SP().list().get()` when a WHERE clause is defined in the view's server
   - Optimized how `$SP().list().get()` deals with `on` option when the parameters are IDs
-  - Updated `sharepointplus-loader` to support `$SP().getServerTime()`
+  - Updated `SharepointSharp-loader` to support `$SP().getServerTime()`
 
 **Change Log v6.1.2 (June 2, 2020)**
 
-  - Fixed `\\` issue in `$SP().parse()` (see https://github.com/Aymkdn/SharepointPlus/issues/136)
+  - Fixed `\\` issue in `$SP().parse()` (see https://github.com/Aymkdn/SharepointSharp/issues/136)
 
 **Change Log v6.1.1 (April 25, 2020)**
 
-  - Fixed bundle size issue introduced with v6.1.0 (see https://github.com/Aymkdn/SharepointPlus/issues/135)
+  - Fixed bundle size issue introduced with v6.1.0 (see https://github.com/Aymkdn/SharepointSharp/issues/135)
 
 **Change Log v6.1.0 (April 10, 2020)**
 
   - Added support for short date format ("YYYY-MM-DD") for `$SP().toDate()`
   - Added `$SP().list().hasPermission()` to check the permissions of the current user with a list/library
-  - Added support for configuration without transpiling (`const $SP = require('sharepointplus/dist/');`)
+  - Added support for configuration without transpiling (`const $SP = require('SharepointSharp/dist/');`)
   - Added option `viewCache`  to `$SP().list().get()`
-  - Added option to get FedAuth cookie using `$SP().auth()` (see https://github.com/Aymkdn/SharepointPlus/wiki/Using-the-FedAuth-Cookie)
+  - Added option to get FedAuth cookie using `$SP().auth()` (see https://github.com/Aymkdn/SharepointSharp/wiki/Using-the-FedAuth-Cookie)
   - Changed behavior for `$SP().getRequestDigest()` and lifetime from 24h to 1800secs
   - Fixed a bug in `$SP().parse()` when too many embedded brackets
   - Fixed a bug in `$SP().ajax()` when the request digest was incorrect
@@ -93,7 +93,7 @@
   - Changed the way `$SP().notify()` calls `sp.js` and `core.js`
   - Changed the default `packetsize` from 15 to 30 for `$SP().list().add()`, `$SP().list().remove()` and `$SP().list().update()`
   - Changed the call for `$SP().list().get()` with `where` as an array from a succession of calls to calls in parallel
-  - Changed changelog to auto-ignore modules that are meant for server-side use (see #https://github.com/Aymkdn/SharepointPlus/issues/123) (based on https://github.com/defunctzombie/package-browser-field-spec)
+  - Changed changelog to auto-ignore modules that are meant for server-side use (see #https://github.com/Aymkdn/SharepointSharp/issues/123) (based on https://github.com/defunctzombie/package-browser-field-spec)
   - Fixed `view` utilized with `where` as an array in `$SP().list().get()`
   - Renamed `$SP().SPArrayBufferToBase64()` to `$SP().arrayBuffer()`
   - Renamed `$SP().SPExtend()` to `$SP().cloneObject()`
@@ -113,16 +113,16 @@
   - Add `$SP().list().stopWorkflow()` to stop/terminate workflows 2010
   - Add unit tests for calendar events and `$SP().parseRecurrence()`
   - Change `$SP().showModalDialog()` that now returns a Promise (we can use either the callback function or the promise)
-  - Change `PeopleAhead` plugin to be compatible with SharepointPlus 5.1+
+  - Change `PeopleAhead` plugin to be compatible with SharepointSharp 5.1+
   - Fix `outerjoin` when using `onLookup` for `$SP().list.get()`
   - Fix incorrect characters in filenames for `addAttachment` and `createFile`
-  - Fix missing catch for `$SP().lists()` (see https://github.com/Aymkdn/SharepointPlus/issues/116)
+  - Fix missing catch for `$SP().lists()` (see https://github.com/Aymkdn/SharepointSharp/issues/116)
 
 **Change Log v5.1 (August 21, 2018)**
 
   - Fix url issue in `$SP().getWorkflowID()`
-  - Fix url issue when SharepointPlus is called from the root (see https://github.com/Aymkdn/SharepointPlus/issues/86)
-  - Fix `parse()` (see https://github.com/Aymkdn/SharepointPlus/issues/89)
+  - Fix url issue when SharepointSharp is called from the root (see https://github.com/Aymkdn/SharepointSharp/issues/86)
+  - Fix `parse()` (see https://github.com/Aymkdn/SharepointSharp/issues/89)
   - Fix `getRequestDigest()` when using it with NodeJS on a sub site collection
   - Fix `addressbook()` (incorrect checks of arguments)
   - Fix `$SP().cleanResult()` when the string was like "-1;#something"
@@ -163,9 +163,9 @@
   - Add option `cache` for `$SP().lists()`
   - Add option `packetsize` for `$SP().list().moderate()`
   - Add `$SP().getPageSize()` that permits to get the size of the document/page
-  - Add option `soapURL` to `$SP().webService()` (see https://github.com/Aymkdn/SharepointPlus/issues/51)
-  - Add wiki pages for "Term/Taxonomy/Managed Metadata" (see https://github.com/Aymkdn/SharepointPlus/wiki/)
-  - Add wiki page for Discussion Board (see https://github.com/Aymkdn/SharepointPlus/wiki/Sharepoint-Discussion-Board)
+  - Add option `soapURL` to `$SP().webService()` (see https://github.com/Aymkdn/SharepointSharp/issues/51)
+  - Add wiki pages for "Term/Taxonomy/Managed Metadata" (see https://github.com/Aymkdn/SharepointSharp/wiki/)
+  - Add wiki page for Discussion Board (see https://github.com/Aymkdn/SharepointSharp/wiki/Sharepoint-Discussion-Board)
   - Add `Property` property for a `TaxonomyFieldType` returned by `$SP().list().info()`
   - Add `._List` that returns the details for the list for `$SP().list().info()`
   - Add `$SP().hasREST()` to detect if REST API is supported
@@ -189,7 +189,7 @@
 
 **Change Log v4.0 (May 4, 2017)**
 
-  - Add NodeJS support: SharepointPlus can now be called as a node module and can be used on server side
+  - Add NodeJS support: SharepointSharp can now be called as a node module and can be used on server side
   - Add `$SP().auth()` that must be used when using NodeJS (based on https://github.com/s-KaiNet/sp-request)
   - Add `$SP().proxy()` that can be used with NodeJS
   - Add Promise support for `$SP().list().get()`
@@ -207,8 +207,8 @@
   - Rewrite the documentation using JSDoc 3 instead of JSDoc 2
   - Reorganize the documentation to group the methods by category
   - Use of eslint to clean up the code
-  - Change license from GPL 3.0 to LGLP 3.0 (see https://github.com/Aymkdn/SharepointPlus/issues/48)
-  - Fix `$SP().checkin()` (see https://github.com/Aymkdn/SharepointPlus/issues/49)
+  - Change license from GPL 3.0 to LGLP 3.0 (see https://github.com/Aymkdn/SharepointSharp/issues/48)
+  - Fix `$SP().checkin()` (see https://github.com/Aymkdn/SharepointSharp/issues/49)
 
 **Change Log v3.14 (March 6, 2017)**
 
@@ -229,7 +229,7 @@
 
   - Fully compatible with Sharepoint 2013!
   - jQuery is not required anymore!
-  - Rewrite `$SP().createFile()` with new options (see [issue #26](https://github.com/Aymkdn/SharepointPlus/issues/26) and [pull #29](https://github.com/Aymkdn/SharepointPlus/pull/29))
+  - Rewrite `$SP().createFile()` with new options (see [issue #26](https://github.com/Aymkdn/SharepointSharp/issues/26) and [pull #29](https://github.com/Aymkdn/SharepointSharp/pull/29))
   - Add operator "IN" for WHERE clause thru `$SP().parse()` (e.g. 'Location IN ["Los Angeles","San Francisco","New York"]')
   - Add special words "TRUE" and "FALSE" for `$SP().parse()` to use with the Yes/No columns
   - Full rewrite of `$SP().formfields()` to be compatible with Sharepoint 2013 (a few things could be now different from previous versions)
@@ -249,7 +249,7 @@
 
 **Change Log v3.12 (January 26, 2016)**
 
-  - Fix problem with IE8 and Array.prototype.indexOf ([issue #25](https://github.com/Aymkdn/SharepointPlus/issues/25))
+  - Fix problem with IE8 and Array.prototype.indexOf ([issue #25](https://github.com/Aymkdn/SharepointSharp/issues/25))
   - Change the versioning number, from 3.0.11 to 3.12
   - Add qunit tests
 
@@ -332,7 +332,7 @@
  - Fix a bug with $SP().parse() when there was a backslash with a single quote and a bracket for a string
  - Change the behavior of $SP().list().add() when you provide an empty array (no more exception returned)
  - Change the order of calling success/error for $SP().list().add/remove/update() -- now the "error" callback is called before the "sucess" callback
- - Fix a bug with $SP().lists() (https://github.com/Aymkdn/SharepointPlus/issues/2)
+ - Fix a bug with $SP().lists() (https://github.com/Aymkdn/SharepointSharp/issues/2)
  - Fix a wrong information in the documentation for $SP().list().get() and "progress"
 
 **Change Log v3.0.4 (March 18, 2013)**
@@ -360,7 +360,7 @@
 - $SP().cleanResult(str) now returns "" when 'str' is null or undefined
 - Change the license to GPL v2
 - Change the Array.prototype.indexOf function
-- Add the SharepointPlus version --> $SP().getVersion();
+- Add the SharepointSharp version --> $SP().getVersion();
 
 **Change Log v3.0.2**
 - Add "encoded" option for $SP().createFile() when the content is already base64-encoded
@@ -379,7 +379,7 @@
 - NOTE: with all these new USER features I'm going to review the way to call them... something like $SP().user().xxx
 
 **Change Log v3.0**
-- MAJOR CHANGE: you must now call SharepointPlus with $SP() instead of $SP
+- MAJOR CHANGE: you must now call SharepointSharp with $SP() instead of $SP
 - ATTENTION: the listID as parameter for the functions is deprecated... you have to use the $SP().list() to define the list
 - ATTENTION: Change the $SP().list().view() function (the behavior is different, see the documentation)
 - Improve the $SP().list() : only use the LIST NAME and not the LIST ID anymore

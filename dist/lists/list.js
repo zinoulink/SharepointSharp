@@ -27,7 +27,7 @@ var _getURL = _interopRequireDefault(require("../utils/getURL.js"));
 
   @param {String} listID Ths list ID or the list name
   @param {String} [url] If the list name is provided, then you need to make sure URL is provided too (then no need to define the URL again for the chained functions like 'get' or 'update')
-  @return {Object} the current SharepointPlus object
+  @return {Object} the current SharepointSharp object
 
   @example
   $SP().list("My List");

@@ -66,7 +66,7 @@ function _isMember() {
               break;
             }
 
-            throw "[SharepointPlus 'isMember'] the user is required.";
+            throw "[SharepointSharp 'isMember'] the user is required.";
 
           case 4:
             if (setup.group) {
@@ -74,7 +74,7 @@ function _isMember() {
               break;
             }
 
-            throw "[SharepointPlus 'isMember'] the group is required.";
+            throw "[SharepointSharp 'isMember'] the group is required.";
 
           case 6:
             setup.cache = setup.cache === false ? false : true;

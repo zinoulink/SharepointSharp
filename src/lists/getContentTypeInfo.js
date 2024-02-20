@@ -22,10 +22,10 @@ import getContentTypes from './getContentTypes.js'
   });
 */
 export default async function getContentTypeInfo(contentType, options) {
-  if (!this.listID) throw "[SharepointPlus 'getContentTypeInfo'] the list ID/Name is required.";
-  if (arguments.length >= 1 && typeof contentType !== "string") throw "[SharepointPlus 'getContentTypeInfo'] the Content Type Name/ID is required.";
+  if (!this.listID) throw "[SharepointSharp 'getContentTypeInfo'] the list ID/Name is required.";
+  if (arguments.length >= 1 && typeof contentType !== "string") throw "[SharepointSharp 'getContentTypeInfo'] the Content Type Name/ID is required.";
   // default values
-  if (!this.url) throw "[SharepointPlus 'getContentTypeInfo'] not able to find the URL!"; // we cannot determine the url
+  if (!this.url) throw "[SharepointSharp 'getContentTypeInfo'] not able to find the URL!"; // we cannot determine the url
   options=options||{cache:true}
 
   // look at the cache
@@ -46,7 +46,7 @@ export default async function getContentTypeInfo(contentType, options) {
         return getContentTypeInfo.call(this, types[i]["ID"], options)
       }
     }
-    throw "[SharepointPlus 'getContentTypeInfo'] not able to find the Content Type called '"+contentType+"' at "+this.url;
+    throw "[SharepointSharp 'getContentTypeInfo'] not able to find the Content Type called '"+contentType+"' at "+this.url;
   }
 
   // do the request

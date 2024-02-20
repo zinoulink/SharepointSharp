@@ -5,7 +5,7 @@ import _sliceInstanceProperty from "@babel/runtime-corejs3/core-js-stable/instan
   @name $SP().hasREST
   @function
   @category utils
-  @description In the earlier version of SharePointPlus, this function was used to check if the REST API was available – these days I assume everyone is now using at least SharePoint 2013, so this function always returns TRUE – if you don't have REST API you can still define _SP_CACHE_HASREST["url to check"]=false
+  @description In the earlier version of SharepointSharp, this function was used to check if the REST API was available – these days I assume everyone is now using at least SharePoint 2013, so this function always returns TRUE – if you don't have REST API you can still define _SP_CACHE_HASREST["url to check"]=false
   @param {Object} settings
     @param {String} [settings.url=current] To check another URL
   @return {Promise} A resolved Promise that gives TRUE or FALSE

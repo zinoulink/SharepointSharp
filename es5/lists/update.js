@@ -85,7 +85,7 @@ function _update() {
               break;
             }
 
-            return _context5.abrupt("return", _Promise.reject("[SharepointPlus 'update'] the list ID/name is required."));
+            return _context5.abrupt("return", _Promise.reject("[SharepointSharp 'update'] the list ID/name is required."));
 
           case 3:
             if (this.url) {
@@ -93,7 +93,7 @@ function _update() {
               break;
             }
 
-            return _context5.abrupt("return", _Promise.reject("[SharepointPlus 'update'] not able to find the URL!"));
+            return _context5.abrupt("return", _Promise.reject("[SharepointSharp 'update'] not able to find the URL!"));
 
           case 5:
             // we cannot determine the url
@@ -146,7 +146,7 @@ function _update() {
               break;
             }
 
-            return _context5.abrupt("return", _Promise.reject("[SharepointPlus 'update'] Unable to find an event with `" + setup.where + "`"));
+            return _context5.abrupt("return", _Promise.reject("[SharepointSharp 'update'] Unable to find an event with `" + setup.where + "`"));
 
           case 25:
             _context5.next = 27;
@@ -215,7 +215,7 @@ function _update() {
               break;
             }
 
-            return _context5.abrupt("return", _Promise.reject("[SharepointPlus 'update'] No event found on " + eventDate));
+            return _context5.abrupt("return", _Promise.reject("[SharepointSharp 'update'] No event found on " + eventDate));
 
           case 46:
             event = event[0]; // see https://fatalfrenchy.wordpress.com/2010/07/16/sharepoint-recurrence-data-schema/
@@ -298,7 +298,7 @@ function _update() {
               break;
             }
 
-            return _context5.abrupt("return", _Promise.reject("[SharepointPlus 'update'] you have to provide the item ID called 'ID'"));
+            return _context5.abrupt("return", _Promise.reject("[SharepointSharp 'update'] you have to provide the item ID called 'ID'"));
 
           case 75:
             for (it in items[_i]) {

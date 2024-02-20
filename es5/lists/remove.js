@@ -76,7 +76,7 @@ function _remove() {
               break;
             }
 
-            throw "[SharepointPlus 'remove'] not able to find the URL!";
+            throw "[SharepointSharp 'remove'] not able to find the URL!";
 
           case 3:
             // we cannot determine the url
@@ -168,7 +168,7 @@ function _remove() {
               break;
             }
 
-            return _context5.abrupt("return", _Promise.reject("[SharepointPlus 'remove'] No event found on " + eventDate));
+            return _context5.abrupt("return", _Promise.reject("[SharepointSharp 'remove'] No event found on " + eventDate));
 
           case 30:
             event = event[0]; // see https://fatalfrenchy.wordpress.com/2010/07/16/sharepoint-recurrence-data-schema/

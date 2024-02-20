@@ -20,8 +20,8 @@ import ajax from '../utils/ajax.js'
  */
 export default async function hasPermission(perm) {
   try {
-    if (!this.listID) throw "[SharepointPlus 'hasPermission'] the list ID/Name is required.";
-    if (!this.url) throw "[SharepointPlus 'hasPermission'] not able to find the URL!"; // we cannot determine the url
+    if (!this.listID) throw "[SharepointSharp 'hasPermission'] the list ID/Name is required.";
+    if (!this.url) throw "[SharepointSharp 'hasPermission'] not able to find the URL!"; // we cannot determine the url
 
     let permMatch = {
       emptyMask: 0,
@@ -68,7 +68,7 @@ export default async function hasPermission(perm) {
 
     // check all permissions exist
     for (let i=0; i<permLen; i++) {
-      if (permMatch[perm[i]] === undefined) throw "[SharepointPlus 'hasPermission'] the permission '"+perm+"' is not valid. Please, check the documentation.";
+      if (permMatch[perm[i]] === undefined) throw "[SharepointSharp 'hasPermission'] the permission '"+perm+"' is not valid. Please, check the documentation.";
     }
 
     let data = await ajax.call(this, {

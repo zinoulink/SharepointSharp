@@ -54,8 +54,8 @@ import getContentTypeInfo from './getContentTypeInfo.js'
 */
 export default async function update(items, options) {
   try {
-    if (!this.listID) return Promise.reject("[SharepointPlus 'update'] the list ID/name is required.");
-    if (!this.url) return Promise.reject("[SharepointPlus 'update'] not able to find the URL!"); // we cannot determine the url
+    if (!this.listID) return Promise.reject("[SharepointSharp 'update'] the list ID/name is required.");
+    if (!this.url) return Promise.reject("[SharepointSharp 'update'] not able to find the URL!"); // we cannot determine the url
 
     // default values
     let setup={};
@@ -81,7 +81,7 @@ export default async function update(items, options) {
         params.calendarOptions={referenceDate:setup.event}
         // we also need all the columns for the event
         let data = await get.call(this, {fields:'ContentType', where:setup.where});
-        if (data.length===0) return Promise.reject("[SharepointPlus 'update'] Unable to find an event with `"+setup.where+"`");
+        if (data.length===0) return Promise.reject("[SharepointSharp 'update'] Unable to find an event with `"+setup.where+"`");
         let fields = await getContentTypeInfo.call(this, data[0].getAttribute('ContentType') || 'Event');
         fields.forEach(function(field) {
           let fieldID = field.Name||field.StaticName;
@@ -119,7 +119,7 @@ export default async function update(items, options) {
         let event = data.filter(function(d) {
           return d.getAttribute("ID").indexOf("."+eventDate+"T") !== -1;
         });
-        if (event.length===0) return Promise.reject("[SharepointPlus 'update'] No event found on "+eventDate);
+        if (event.length===0) return Promise.reject("[SharepointSharp 'update'] No event found on "+eventDate);
         event = event[0];
 
         // see https://fatalfrenchy.wordpress.com/2010/07/16/sharepoint-recurrence-data-schema/
@@ -162,7 +162,7 @@ export default async function update(items, options) {
     let updates = '<Batch OnError="Continue" ListVersion="1"  ViewName="">';
     for (let i=0; i < itemsLength; i++) {
       updates += '<Method ID="'+(i+1)+'" Cmd="Update">';
-      if (!items[i].ID) return Promise.reject("[SharepointPlus 'update'] you have to provide the item ID called 'ID'");
+      if (!items[i].ID) return Promise.reject("[SharepointSharp 'update'] you have to provide the item ID called 'ID'");
       for (it in items[i]) {
         if (Object.prototype.hasOwnProperty.call(items[i], it)) {
           itemKey = it;

@@ -55,7 +55,7 @@ var _getTimeZoneInfo = _interopRequireDefault(require("../utils/getTimeZoneInfo.
                note: A multiple selection of Lookup must be provided as ";#X;#Choice 1;#Y;#Choice 2;#" (with X the ID for "Choice 1", and "Y" for "Choice 2")
                      --> it should also be possible to not pass the values but only the ID, e.g.: ";#X;#;#Y;#;#"
                note: A Yes/No checkbox must be provided as "1" (for TRUE) or "0" (for "False")
-               note: A Term / Taxonomy / Managed Metadata field must be provided as "0;#|UniqueIdentifier" for the special hidden related column (see https://github.com/Aymkdn/SharepointPlus/wiki/ to know more)
+               note: A Term / Taxonomy / Managed Metadata field must be provided as "0;#|UniqueIdentifier" for the special hidden related column (see https://github.com/Aymkdn/SharepointSharp/wiki/ to know more)
                note: You cannot change the Approval Status when adding, you need to use the $SP().moderate function
 
   @param {Object|Array} items List of items (e.g. [{Field_x0020_Name: "Value", OtherField: "new value"}, {Field_x0020_Name: "Value2", OtherField: "new value2"}])
@@ -108,7 +108,7 @@ var _getTimeZoneInfo = _interopRequireDefault(require("../utils/getTimeZoneInfo.
     }
   })
 
-  // for Discussion Board, please refer to https://github.com/Aymkdn/SharepointPlus/wiki/Sharepoint-Discussion-Board
+  // for Discussion Board, please refer to https://github.com/Aymkdn/SharepointSharp/wiki/Sharepoint-Discussion-Board
 */
 function add(_x, _x2) {
   return _add.apply(this, arguments);
@@ -133,7 +133,7 @@ function _add() {
               break;
             }
 
-            throw "[SharepointPlus 'add'] the list ID/Name is required.";
+            throw "[SharepointSharp 'add'] the list ID/Name is required.";
 
           case 3:
             if (this.url) {
@@ -141,7 +141,7 @@ function _add() {
               break;
             }
 
-            throw "[SharepointPlus 'add'] not able to find the URL!";
+            throw "[SharepointSharp 'add'] not able to find the URL!";
 
           case 5:
             // we cannot determine the url

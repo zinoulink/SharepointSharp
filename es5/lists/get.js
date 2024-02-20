@@ -444,7 +444,7 @@ function _parseOn(q) {
     })
   });
 
-  // for Discussion Board, please refer to https://github.com/Aymkdn/SharepointPlus/wiki/Sharepoint-Discussion-Board
+  // for Discussion Board, please refer to https://github.com/Aymkdn/SharepointSharp/wiki/Sharepoint-Discussion-Board
 
   // [It doesn't work with Sharepoint 2013 anymore, only for SP2010]
   // You can use `useIndexForOrderBy:true` to override the list view threshold -- see https://spservices.codeplex.com/discussions/280642
@@ -497,7 +497,7 @@ function _get() {
                       }
 
                       return _context14.abrupt("return", {
-                        v: _Promise.reject("[SharepointPlus 'get']: the list ID/Name is required")
+                        v: _Promise.reject("[SharepointSharp 'get']: the list ID/Name is required")
                       });
 
                     case 2:
@@ -511,7 +511,7 @@ function _get() {
                       }
 
                       return _context14.abrupt("return", {
-                        v: _Promise.reject("[SharepointPlus 'get']: not able to find the URL!")
+                        v: _Promise.reject("[SharepointSharp 'get']: not able to find the URL!")
                       });
 
                     case 6:

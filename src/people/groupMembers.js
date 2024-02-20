@@ -22,7 +22,7 @@ import _cleanString from '../utils/_cleanString.js'
 */
 export default async function groupMembers(groupname, setup) {
   try {
-    if (!groupname) throw "[SharepointPlus 'groupMembers'] the groupname is required.";
+    if (!groupname) throw "[SharepointSharp 'groupMembers'] the groupname is required.";
     // default values
     setup = setup || {};
     setup.cache = (setup.cache === false ? false : true);

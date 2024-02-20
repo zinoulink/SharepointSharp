@@ -30,11 +30,11 @@ global._SP_ISBROWSER = new Function("try {return this===window;}catch(e){ return
 global._SP_ISSPO = {};
 global._SP_JSON_ACCEPT = "verbose"; // other options are "minimalmetadata" and "nometadata"
 
-var SharepointPlus =
+var SharepointSharp =
 /*#__PURE__*/
 function () {
-  function SharepointPlus() {
-    _classCallCheck(this, SharepointPlus);
+  function SharepointSharp() {
+    _classCallCheck(this, SharepointSharp);
 
     this.queue = []; // array of {fct:"function to execute", args:"Related arguments for this function"}
 
@@ -54,11 +54,11 @@ function () {
     @function
     @category core
     @description Returns the SP version
-      @return {String} The current SharepointPlus version
+      @return {String} The current SharepointSharp version
   */
 
 
-  _createClass(SharepointPlus, [{
+  _createClass(SharepointSharp, [{
     key: "getVersion",
     value: function getVersion() {
       return "6.2.0";
@@ -70,9 +70,9 @@ function () {
       @description Permits to use credentials when doing requests (for Node module only)
         @param {Object} credentialOptions Options from https://github.com/s-KaiNet/node-sp-auth
           @params {String} [method] If we cannot use an authentication from 'node-sp-auth', then we need to define the method here (only 'cookie' is supported for now)
-      @return {Object} the current SharepointPlus object
+      @return {Object} the current SharepointSharp object
         @example
-      var user1 = {username:'aymeric', password:'sharepointplus', domain:'kodono'};
+      var user1 = {username:'aymeric', password:'SharepointSharp', domain:'kodono'};
       $SP().auth(user1)
            .list("My List","http://my.sharpoi.nt/other.directory/")
           .get({...});
@@ -80,7 +80,7 @@ function () {
       var sp = $SP().auth(user1);
       sp.list("My List", "https://web.si.te").get({...});
       sp.list("Other List"; "http://my.sharpoi.nt/other.directory/").update(...);
-        // if you use the AddIn method, it may not work – in that case, you'll need to use the FedAuth method as described there: https://github.com/Aymkdn/SharepointPlus/wiki/Using-the-FedAuth-Cookie#javascript-code
+        // if you use the AddIn method, it may not work – in that case, you'll need to use the FedAuth method as described there: https://github.com/Aymkdn/SharepointSharp/wiki/Using-the-FedAuth-Cookie#javascript-code
       // let's say we want to use our own function to set the FedAuth cookie
       var sp = $SP().auth({method:'cookie', function() {
         // we need to return the content of our cookie
@@ -106,9 +106,9 @@ function () {
       @category node
       @description Permits to define a proxy server (for Node module only)
         @param {String} proxyURL Looks like "http://domain%5Cusername:password@proxy.something:80"
-      @return {Object} the current SharepointPlus object
+      @return {Object} the current SharepointSharp object
         @example
-      var user1 = {username:'aymeric', password:'sharepointplus', domain:'kodono'};
+      var user1 = {username:'aymeric', password:'SharepointSharp', domain:'kodono'};
       var proxy = "http://" + user1.domain + "%5C" + user1.username + ":" + user1.password + "@proxy:80";
       $SP().proxy(proxy).auth(user1)
            .list("My List","http://my.sharpoi.nt/other.directory/")
@@ -234,7 +234,7 @@ function () {
     }
   }]);
 
-  return SharepointPlus;
+  return SharepointSharp;
 }();
 
-export { SharepointPlus as default };
+export { SharepointSharp as default };

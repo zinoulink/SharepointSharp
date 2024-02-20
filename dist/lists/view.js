@@ -65,7 +65,7 @@ function _view() {
               break;
             }
 
-            return _context2.abrupt("return", _promise.default.reject("[SharepointPlus 'view'] the list ID/Name is required."));
+            return _context2.abrupt("return", _promise.default.reject("[SharepointSharp 'view'] the list ID/Name is required."));
 
           case 3:
             if (viewID) {
@@ -73,7 +73,7 @@ function _view() {
               break;
             }
 
-            return _context2.abrupt("return", _promise.default.reject("[SharepointPlus 'view'] the view ID/Name is required."));
+            return _context2.abrupt("return", _promise.default.reject("[SharepointSharp 'view'] the view ID/Name is required."));
 
           case 5:
             // default values
@@ -86,7 +86,7 @@ function _view() {
               break;
             }
 
-            return _context2.abrupt("return", _promise.default.reject("[SharepointPlus 'view'] not able to find the URL!"));
+            return _context2.abrupt("return", _promise.default.reject("[SharepointSharp 'view'] not able to find the URL!"));
 
           case 10:
             if (!options.cache) {
@@ -227,7 +227,7 @@ function _view() {
             return _context2.finish(60);
 
           case 68:
-            return _context2.abrupt("return", _promise.default.reject("[SharepointPlus 'view'] not able to find the view called '" + viewID + "' for list '" + this.listID + "' at " + this.url));
+            return _context2.abrupt("return", _promise.default.reject("[SharepointSharp 'view'] not able to find the view called '" + viewID + "' for list '" + this.listID + "' at " + this.url));
 
           case 69:
             _context2.next = 71;

@@ -60,7 +60,7 @@ function _getUserInfo() {
               break;
             }
 
-            throw "[SharepointPlus 'getUserInfo'] the username is required.";
+            throw "[SharepointSharp 'getUserInfo'] the username is required.";
 
           case 3:
             // default values
@@ -94,7 +94,7 @@ function _getUserInfo() {
               break;
             }
 
-            return _context.abrupt("return", _promise.default.reject("[SharepointPlus 'getUserInfo'] nothing returned?!"));
+            return _context.abrupt("return", _promise.default.reject("[SharepointSharp 'getUserInfo'] nothing returned?!"));
 
           case 16:
             return _context.abrupt("return", _promise.default.resolve({

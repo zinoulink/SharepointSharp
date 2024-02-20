@@ -23,11 +23,11 @@ import myElem from './myElem.js'
 */
 export default async function moderate(items, setup) {
   try {
-    if (!this.listID) throw "[SharepointPlus 'moderate'] the list ID/Name is required.";
+    if (!this.listID) throw "[SharepointSharp 'moderate'] the list ID/Name is required.";
 
     // default values
     setup = setup || {};
-    if (!this.url) throw "[SharepointPlus 'moderate'] not able to find the URL!"; // we cannot determine the url
+    if (!this.url) throw "[SharepointSharp 'moderate'] not able to find the URL!"; // we cannot determine the url
     setup.progress= setup.progress || function(){};
 
     if (!Array.isArray(items)) items = [ items ];
@@ -53,8 +53,8 @@ export default async function moderate(items, setup) {
     let updates = '<Batch OnError="Continue" ListVersion="1"  ViewName="">';
     for (let i=0; i < itemsLength; i++) {
       updates += '<Method ID="'+(i+1)+'" Cmd="Moderate">';
-      if (!items[i].ID) throw "[SharepointPlus 'moderate'] you have to provide the item ID called 'ID'";
-      else if (typeof items[i].ApprovalStatus === "undefined") throw "[SharepointPlus 'moderate'] you have to provide the approval status 'ApprovalStatus' (Approved, Rejected, Pending, Draft or Scheduled)";
+      if (!items[i].ID) throw "[SharepointSharp 'moderate'] you have to provide the item ID called 'ID'";
+      else if (typeof items[i].ApprovalStatus === "undefined") throw "[SharepointSharp 'moderate'] you have to provide the approval status 'ApprovalStatus' (Approved, Rejected, Pending, Draft or Scheduled)";
       for (it in items[i]) {
         if (Object.prototype.hasOwnProperty.call(items[i], it)) {
           itemKey = it;

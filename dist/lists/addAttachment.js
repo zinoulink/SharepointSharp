@@ -76,13 +76,13 @@ var _restoreVersion = _interopRequireDefault(require("./restoreVersion.js"));
 function addAttachment(setup) {
   var _this = this;
 
-  if (arguments.length === 0) throw "[SharepointPlus 'addAttachment'] the arguments are mandatory.";
-  if (!this.listID) throw "[SharepointPlus 'addAttachment'] the list ID/Name is required.";
-  if (!this.url) throw "[SharepointPlus 'addAttachment'] not able to find the URL!"; // we cannot determine the url
+  if (arguments.length === 0) throw "[SharepointSharp 'addAttachment'] the arguments are mandatory.";
+  if (!this.listID) throw "[SharepointSharp 'addAttachment'] the list ID/Name is required.";
+  if (!this.url) throw "[SharepointSharp 'addAttachment'] not able to find the URL!"; // we cannot determine the url
 
-  if (!setup.ID) throw "[SharepointPlus 'addAttachment'] the item ID is required.";
-  if (!setup.filename) throw "[SharepointPlus 'addAttachment'] the filename is required.";
-  if (!setup.attachment) throw "[SharepointPlus 'addAttachment'] the ArrayBuffer of the attachment's content is required."; // avoid invalid characters
+  if (!setup.ID) throw "[SharepointSharp 'addAttachment'] the item ID is required.";
+  if (!setup.filename) throw "[SharepointSharp 'addAttachment'] the filename is required.";
+  if (!setup.attachment) throw "[SharepointSharp 'addAttachment'] the ArrayBuffer of the attachment's content is required."; // avoid invalid characters
   // eslint-disable-next-line
 
   var filename = setup.filename.replace(/[\*\?\|\\/:"'<>#{}%~&]/g, "").replace(/^[\. ]+|[\. ]+$/g, "").replace(/ {2,}/g, " ").replace(/\.{2,}/g, ".");

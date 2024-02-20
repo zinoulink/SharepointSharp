@@ -19,9 +19,9 @@ import _buildBodyForSOAP from './_buildBodyForSOAP.js';
 export default function getContentTypes(options) {
   var _this = this;
 
-  if (!this.listID) throw "[SharepointPlus 'getContentTypes'] the list ID/name is required."; // default values
+  if (!this.listID) throw "[SharepointSharp 'getContentTypes'] the list ID/name is required."; // default values
 
-  if (!this.url) throw "[SharepointPlus 'getContentTypes'] not able to find the URL!"; // we cannot determine the url
+  if (!this.url) throw "[SharepointSharp 'getContentTypes'] not able to find the URL!"; // we cannot determine the url
   // check the Cache
 
   options = options || {

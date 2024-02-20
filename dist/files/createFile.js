@@ -122,7 +122,7 @@ var _cloneObject = _interopRequireDefault(require("../utils/cloneObject.js"));
     })).then(function(files) {
       // upload files
       return Promise.all(files.map(function(file) {
-        return $SP().list("SharepointPlusLibrary").createFile({
+        return $SP().list("SharepointSharpLibrary").createFile({
           content:file.content,
           filename:file.name,
           progress:function(perc) {
@@ -134,7 +134,7 @@ var _cloneObject = _interopRequireDefault(require("../utils/cloneObject.js"));
   }
 
   // if you want to add some headers, for example for authentication method
-  $SP().list("SharepointPlusLibrary").createFile({
+  $SP().list("SharepointSharpLibrary").createFile({
     content:file.content,
     filename:file.name,
     getXHR:function(xhr) {
@@ -167,7 +167,7 @@ function _createFile() {
               break;
             }
 
-            throw "[SharepointPlus 'createFile']: the file content is required.";
+            throw "[SharepointSharp 'createFile']: the file content is required.";
 
           case 4:
             if (!(typeof setup.filename === "undefined")) {
@@ -175,7 +175,7 @@ function _createFile() {
               break;
             }
 
-            throw "[SharepointPlus 'createFile']: the filename is required.";
+            throw "[SharepointSharp 'createFile']: the filename is required.";
 
           case 6:
             if (this.listID) {
@@ -183,7 +183,7 @@ function _createFile() {
               break;
             }
 
-            throw "[SharepointPlus 'createFile']: the library name is required.";
+            throw "[SharepointSharp 'createFile']: the library name is required.";
 
           case 8:
             if (this.url) {
@@ -191,7 +191,7 @@ function _createFile() {
               break;
             }
 
-            throw "[SharepointPlus 'createFile']: not able to find the URL!";
+            throw "[SharepointSharp 'createFile']: not able to find the URL!";
 
           case 10:
             // we cannot determine the url
@@ -295,7 +295,7 @@ function _createFile() {
               break;
             }
 
-            return _context2.abrupt("return", _promise.default.reject("[SharepointPlus 'createFile'] Error creating (" + destination + "): " + a.getAttribute("ErrorCode") + " - " + a.getAttribute("ErrorMessage")));
+            return _context2.abrupt("return", _promise.default.reject("[SharepointSharp 'createFile'] Error creating (" + destination + "): " + a.getAttribute("ErrorCode") + " - " + a.getAttribute("ErrorMessage")));
 
           case 51:
             return _context2.abrupt("return", _promise.default.resolve({

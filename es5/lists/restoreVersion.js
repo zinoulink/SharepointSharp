@@ -43,7 +43,7 @@ function _restoreVersion() {
               break;
             }
 
-            throw "[SharepointPlus 'restoreVersion'] the arguments are mandatory.";
+            throw "[SharepointSharp 'restoreVersion'] the arguments are mandatory.";
 
           case 2:
             if (this.listID) {
@@ -51,7 +51,7 @@ function _restoreVersion() {
               break;
             }
 
-            throw "[SharepointPlus 'restoreVersion'] the list ID/Name is required.";
+            throw "[SharepointSharp 'restoreVersion'] the list ID/Name is required.";
 
           case 4:
             if (this.url) {
@@ -59,7 +59,7 @@ function _restoreVersion() {
               break;
             }
 
-            throw "[SharepointPlus 'restoreVersion'] not able to find the URL!";
+            throw "[SharepointSharp 'restoreVersion'] not able to find the URL!";
 
           case 6:
             if (setup.ID) {
@@ -67,7 +67,7 @@ function _restoreVersion() {
               break;
             }
 
-            throw "[SharepointPlus 'restoreVersion'] the item ID is required.";
+            throw "[SharepointSharp 'restoreVersion'] the item ID is required.";
 
           case 8:
             if (setup.VersionID) {
@@ -75,7 +75,7 @@ function _restoreVersion() {
               break;
             }
 
-            throw "[SharepointPlus 'restoreVersion'] the VersionID is required.";
+            throw "[SharepointSharp 'restoreVersion'] the VersionID is required.";
 
           case 10:
             _context.next = 12;
@@ -90,7 +90,7 @@ function _restoreVersion() {
               break;
             }
 
-            return _context.abrupt("return", _Promise.reject("[SharepointPlus 'restoreVersion'] No versionning enabled on the list '" + this.listID + "'."));
+            return _context.abrupt("return", _Promise.reject("[SharepointSharp 'restoreVersion'] No versionning enabled on the list '" + this.listID + "'."));
 
           case 16:
             _context.next = 18;

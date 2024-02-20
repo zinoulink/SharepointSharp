@@ -42,10 +42,10 @@ var _ajax = _interopRequireDefault(require("../utils/ajax.js"));
 function stopWorkflow(setup) {
   var _this = this;
 
-  if (!this.url) throw "[SharepointPlus 'stopWorkflow'] not able to find the URL!";
+  if (!this.url) throw "[SharepointSharp 'stopWorkflow'] not able to find the URL!";
   setup = setup || {};
-  if (!setup.workflowName && !setup.workflowID) throw "[SharepointPlus 'stopWorkflow'] Please provide the workflow name";
-  if (!setup.ID) throw "[SharepointPlus 'stopWorkflow'] Please provide the item ID"; // retrieve the workflow instances
+  if (!setup.workflowName && !setup.workflowID) throw "[SharepointSharp 'stopWorkflow'] Please provide the workflow name";
+  if (!setup.ID) throw "[SharepointSharp 'stopWorkflow'] Please provide the item ID"; // retrieve the workflow instances
 
   return _getWorkflowID.default.call(this, {
     ID: setup.ID,
@@ -70,7 +70,7 @@ function stopWorkflow(setup) {
                 break;
               }
 
-              return _context3.abrupt("return", _promise.default.reject("[SharepointPlus 'stopWorkflow'] No instances found for this workflow"));
+              return _context3.abrupt("return", _promise.default.reject("[SharepointSharp 'stopWorkflow'] No instances found for this workflow"));
 
             case 3:
               lastInstance = wrkflw.instances[lenInstances - 1];
@@ -88,7 +88,7 @@ function stopWorkflow(setup) {
                 break;
               }
 
-              throw "[SharepointPlus 'stopWorkflow'] Unable to find the __REQUESTDIGEST from the Workflow Status page";
+              throw "[SharepointSharp 'stopWorkflow'] Unable to find the __REQUESTDIGEST from the Workflow Status page";
 
             case 10:
               requestDigest = requestDigest[0].match(/<input type="hidden" name="__REQUESTDIGEST" id="__REQUESTDIGEST" value="(.*)" \/>/)[1];
@@ -99,7 +99,7 @@ function stopWorkflow(setup) {
                 break;
               }
 
-              throw "[SharepointPlus 'stopWorkflow'] Unable to find the __VIEWSTATE from the Workflow Status page";
+              throw "[SharepointSharp 'stopWorkflow'] Unable to find the __VIEWSTATE from the Workflow Status page";
 
             case 14:
               viewState = viewState[0].match(/<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="(.*)" \/>/)[1];
@@ -110,7 +110,7 @@ function stopWorkflow(setup) {
                 break;
               }
 
-              throw "[SharepointPlus 'stopWorkflow'] Unable to find the __VIEWSTATEGENERATOR from the Workflow Status page";
+              throw "[SharepointSharp 'stopWorkflow'] Unable to find the __VIEWSTATEGENERATOR from the Workflow Status page";
 
             case 18:
               viewStateGenerator = viewStateGenerator[0].match(/<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="(.*)" \/>/)[1];
@@ -121,7 +121,7 @@ function stopWorkflow(setup) {
                 break;
               }
 
-              throw "[SharepointPlus 'stopWorkflow'] Unable to find the __EVENTVALIDATION from the Workflow Status page";
+              throw "[SharepointSharp 'stopWorkflow'] Unable to find the __EVENTVALIDATION from the Workflow Status page";
 
             case 22:
               eventValidation = eventValidation[0].match(/<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="(.*)" \/>/)[1];

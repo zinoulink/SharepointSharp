@@ -63,7 +63,7 @@ function _getContentTypeInfo() {
               break;
             }
 
-            throw "[SharepointPlus 'getContentTypeInfo'] the list ID/Name is required.";
+            throw "[SharepointSharp 'getContentTypeInfo'] the list ID/Name is required.";
 
           case 2:
             if (!(_args.length >= 1 && typeof contentType !== "string")) {
@@ -71,7 +71,7 @@ function _getContentTypeInfo() {
               break;
             }
 
-            throw "[SharepointPlus 'getContentTypeInfo'] the Content Type Name/ID is required.";
+            throw "[SharepointSharp 'getContentTypeInfo'] the Content Type Name/ID is required.";
 
           case 4:
             if (this.url) {
@@ -79,7 +79,7 @@ function _getContentTypeInfo() {
               break;
             }
 
-            throw "[SharepointPlus 'getContentTypeInfo'] not able to find the URL!";
+            throw "[SharepointSharp 'getContentTypeInfo'] not able to find the URL!";
 
           case 6:
             // we cannot determine the url
@@ -143,7 +143,7 @@ function _getContentTypeInfo() {
             break;
 
           case 25:
-            throw "[SharepointPlus 'getContentTypeInfo'] not able to find the Content Type called '" + contentType + "' at " + this.url;
+            throw "[SharepointSharp 'getContentTypeInfo'] not able to find the Content Type called '" + contentType + "' at " + this.url;
 
           case 26:
             _context.next = 28;

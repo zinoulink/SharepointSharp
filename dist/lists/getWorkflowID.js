@@ -62,7 +62,7 @@ function _getWorkflowID() {
               break;
             }
 
-            throw "[SharepointPlus 'getWorkflowID'] the list ID/Name is required.";
+            throw "[SharepointSharp 'getWorkflowID'] the list ID/Name is required.";
 
           case 3:
             if (this.url) {
@@ -70,7 +70,7 @@ function _getWorkflowID() {
               break;
             }
 
-            throw "[SharepointPlus 'getWorkflowID'] not able to find the URL!";
+            throw "[SharepointSharp 'getWorkflowID'] not able to find the URL!";
 
           case 5:
             // we cannot determine the url
@@ -81,7 +81,7 @@ function _getWorkflowID() {
               break;
             }
 
-            throw "[SharepointPlus 'getWorkflowID'] all parameters are mandatory";
+            throw "[SharepointSharp 'getWorkflowID'] all parameters are mandatory";
 
           case 8:
             _context4.next = 10;
@@ -98,7 +98,7 @@ function _getWorkflowID() {
               break;
             }
 
-            throw "[SharepointPlus 'getWorkflowID'] I'm not able to find the item ID " + setup.ID;
+            throw "[SharepointSharp 'getWorkflowID'] I'm not able to find the item ID " + setup.ID;
 
           case 13:
             fileRef = this.cleanResult(d[0].getAttribute("FileRef"));
@@ -136,7 +136,7 @@ function _getWorkflowID() {
               break;
             }
 
-            throw "[SharepointPlus 'getWorkflowID'] This function must be executed from a Sharepoint page (JSOM support is required).";
+            throw "[SharepointSharp 'getWorkflowID'] This function must be executed from a Sharepoint page (JSOM support is required).";
 
           case 23:
             // depending of the permissions, we couldn't have the WorkflowTemplate data
@@ -171,7 +171,7 @@ function _getWorkflowID() {
 
                 prom_res(_res);
               }, function () {
-                prom_rej("[SharepointPlus 'getWorkflowID'] Problem while dealing with SP.ClientContext.get_current()");
+                prom_rej("[SharepointSharp 'getWorkflowID'] Problem while dealing with SP.ClientContext.get_current()");
               });
             });
 
@@ -300,7 +300,7 @@ function _getWorkflowID() {
               break;
             }
 
-            throw "[SharepointPlus 'getWorkflowID'] it seems the requested workflow ('" + setup.workflowName + "') doesn't exist!";
+            throw "[SharepointSharp 'getWorkflowID'] it seems the requested workflow ('" + setup.workflowName + "') doesn't exist!";
 
           case 57:
             return _context4.abrupt("return", _promise.default.resolve(res));

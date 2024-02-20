@@ -15,7 +15,7 @@ export default function toDate(strDate, forceUTC) {
   if (strDate.slice(0,10)==="datetime;#") strDate=strDate.slice(10);
   // if it's a short date like 2020-01-19 then we use new Date() with 'T00:00:00' to avoid timezone issue
   if (strDate.length === 10 && /\d{4}-\d{2}-\d{2}/.test(strDate)) return new Date(strDate + 'T00:00:00');
-  if (strDate.length!=19 && strDate.length!=20) throw "[SharepointPlus toDate] '"+strDate+"' is invalid."
+  if (strDate.length!=19 && strDate.length!=20) throw "[SharepointSharp toDate] '"+strDate+"' is invalid."
   var year  = strDate.substring(0,4);
   var month = strDate.substring(5,7);
   var day   = strDate.substring(8,10);

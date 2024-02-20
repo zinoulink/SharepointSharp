@@ -34,9 +34,9 @@ var _buildBodyForSOAP2 = _interopRequireDefault(require("./_buildBodyForSOAP.js"
   });
 */
 function history(params) {
-  if (!this.listID) throw "[SharepointPlus 'history'] the list ID/Name is required.";
+  if (!this.listID) throw "[SharepointSharp 'history'] the list ID/Name is required.";
   params = params || {};
-  if (!params.ID || !params.Name) throw "[SharepointPlus 'history'] you must provide the item ID and field Name."; // send the request
+  if (!params.ID || !params.Name) throw "[SharepointSharp 'history'] you must provide the item ID and field Name."; // send the request
 
   return _ajax.default.call(this, {
     url: this.url + "/_vti_bin/lists.asmx",

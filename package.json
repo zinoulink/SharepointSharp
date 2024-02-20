@@ -1,5 +1,5 @@
 {
-  "name": "sharepointplus",
+  "name": "SharepointSharp",
   "version": "6.2.0",
   "description": "A library that offers an easy interface to deal with Sharepoint",
   "module": "./es5/index.js",
@@ -61,7 +61,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Aymkdn/SharepointPlus.git"
+    "url": "git+https://github.com/Aymkdn/SharepointSharp.git"
   },
   "keywords": [
     "sharepoint"
@@ -70,9 +70,9 @@
   "author": "AymKdn",
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/Aymkdn/SharepointPlus/issues"
+    "url": "https://github.com/Aymkdn/SharepointSharp/issues"
   },
-  "homepage": "http://aymkdn.github.io/SharepointPlus/",
+  "homepage": "http://aymkdn.github.io/SharepointSharp/",
   "_comments": {
     "module": "Replace 'es5' with 'src' during development phase"
   }
