@@ -42,40 +42,61 @@
  * });
  */
 export default function resizeModalDialog(options) {
-  var dlg, dialogElements, deltaWidth, deltaHeight, key;
-  var pxToNum=function(px) { return px.replace(/px/,"")*1 };
-  var wt=window.top;
-  if (!options.id) {
-    if (wt._SP_MODALDIALOG.length===0) return false; // no modal
-    options.id = wt._SP_MODALDIALOG[wt._SP_MODALDIALOG.length-1].id.replace(/sp_frame_/,"");
-  }
-  // find dialog element
-  dlg = wt.document.getElementById('sp_frame_'+options.id);
-  if (!dlg) return false; // cannot find the modal
-  dlg = dlg.nextSibling;
-  options.width = (options.width === undefined ? pxToNum(dlg.style.width) : options.width);
-  options.height = (options.height === undefined ? pxToNum(dlg.style.height) : options.height);
-  // inspiration: https://social.msdn.microsoft.com/Forums/office/en-US/d92508be-4b4b-4f78-86d3-5d15a510bb18/how-do-i-resize-a-dialog-box-once-its-open?forum=sharepointdevelopmentprevious
-  dialogElements = {
-    "Border":dlg.querySelector('.ms-dlgBorder'),
-    "TitleText":dlg.querySelector('.ms-dlgTitleText'),
-    "Content":dlg,
-    "Frame":dlg.querySelector('.ms-dlgFrame')
-  };
-  // calculate width & height delta
-  deltaWidth = options.width - pxToNum(dialogElements.Border.style.width);
-  deltaHeight = options.height - pxToNum(dialogElements.Border.style.height);
+  // Find modal element by ID or default to the last modal
+  const dlg = this._findModalDialog(options.id);
+  if (!dlg) return; // Cannot find the modal
 
-  for (key in dialogElements) {
-    if (Object.prototype.hasOwnProperty.call(dialogElements, key) && dialogElements[key]) {
-      dialogElements[key].style.width = (pxToNum(dialogElements[key].style.width) + deltaWidth) + "px";
-      // set the height, excluding title elements
-      if (key !== "TitleText") dialogElements[key].style.height = (pxToNum(dialogElements[key].style.height) + deltaHeight) + "px";
+  // Get or set width and height with default values
+  const { width = parseInt(dlg.style.width, 10), height = parseInt(dlg.style.height, 10) } = options;
+
+  // Select relevant dialog elements
+  const elements = this._getDialogElements(dlg);
+
+  // Calculate delta values for width and height
+  const deltaWidth = width - elements.border.offsetWidth;
+  const deltaHeight = height - elements.border.offsetHeight;
+
+  // Update individual element styles
+  this._updateElementSizes(elements, deltaWidth, deltaHeight);
+
+  // Recenter the modal
+  this._centerDialog(dlg);
+}
+
+// Helper functions
+
+_findModalDialog(id) {
+  const topWindow = window.top;
+  if (id) {
+    return topWindow.document.getElementById(`sp_frame_${id}`);
+  } else if (topWindow._SP_MODALDIALOG.length > 0) {
+    return topWindow.document.getElementById(`sp_frame_${topWindow._SP_MODALDIALOG[topWindow._SP_MODALDIALOG.length - 1].id.replace(/sp_frame_/, "")}`);
+  }
+  return null;
+}
+
+_getDialogElements(dlg) {
+  return {
+    border: dlg.querySelector('.ms-dlgBorder'),
+    titleText: dlg.querySelector('.ms-dlgTitleText'),
+    content: dlg,
+    frame: dlg.querySelector('.ms-dlgFrame'),
+  };
+}
+
+_updateElementSizes(elements, deltaWidth, deltaHeight) {
+  for (const key in elements) {
+    if (elements.hasOwnProperty(key)) {
+      elements[key].style.width = `${elements[key].offsetWidth + deltaWidth}px`;
+      if (key !== "titleText") {
+        elements[key].style.height = `${elements[key].offsetHeight + deltaHeight}px`;
+      }
     }
   }
+}
 
-  // now we recenter
-  var pageSize=this.getPageSize(wt);
-  dlg.style.top=(pageSize.vw.height / 2 - pxToNum(dlg.style.height) / 2) + "px";
-  dlg.style.left=(pageSize.vw.width / 2 - pxToNum(dlg.style.width) / 2 ) + "px";
+_centerDialog(dlg) {
+  const pageSize = this.getPageSize(window.top);
+  dlg.style.top = `${(pageSize.vw.height / 2) - (dlg.offsetHeight / 2)}px`;
+  dlg.style.left = `${(pageSize.vw.width / 2) - (dlg.offsetWidth / 2)}px`;
 }
